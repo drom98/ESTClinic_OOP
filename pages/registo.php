@@ -1,11 +1,3 @@
-<?php
-
-require_once '../config/init.php';
-
-$user = new Utilizador;
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

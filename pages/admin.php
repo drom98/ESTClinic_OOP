@@ -10,6 +10,9 @@ $utilizadoresAtivos = $user->getUsersAtivos();
 $utilizadoresPorAprovar = $user->getUsersPorAprovar();
 $utilizadoresEliminados = $user->getUsersEliminados();
 
+$consulta = new Consulta;
+$todasConsEnf = $consulta->getTodasConsultEnf();
+
 echo "Bem vindo, " . $_SESSION["nome"];
 
 echo "<a href='logout.php'>Terminar Sessao</a>";
@@ -101,5 +104,13 @@ echo "<a href='logout.php'>Terminar Sessao</a>";
     <?php endforeach; ?>
   </tbody>
 </table>
+<?php var_dump($todasConsEnf) ?>
+<?php foreach($todasConsEnf as $consulta): ?>
+  <tr>
+    <tr><?php echo $consulta->data ?></tr>
+    <tr><?php echo $consulta->nome ?></tr>
+    <tr><?php echo $consulta->estado ?></tr>
+  </tr>
+<?php endforeach; ?>
 </body>
 </html>

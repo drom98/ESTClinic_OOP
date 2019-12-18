@@ -98,6 +98,9 @@ class Utilizador extends Basedados {
       case 'logout':
         header("Location: ../pages/login.php?erro=logout");
       break;
+      case 'permissao':
+        header("Location: ../pages/login.php?erro=permissao");
+      break;
       default:
       break;
     }
