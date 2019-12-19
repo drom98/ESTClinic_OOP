@@ -38,6 +38,8 @@ class Utilizador extends Basedados {
     return $this->executarQuery($sql);
   }
 
+  //CRUD
+  //Inserir utilizador
   public function inserirUtilizador($dados) {
     $sql = "INSERT INTO utilizador (nomeUtilizador, nome, email, password, data, tipoUtilizador) VALUES (:nomeUtilizador, :nome, :email, :password, :data, :tipoUtilizador)";
 
@@ -47,6 +49,30 @@ class Utilizador extends Basedados {
     } else {
       return false;
     }
+  }
+
+  //Editar utilizador
+  public function editarUtilizador($id, $dados) {
+    $sql = "UPDATE utilizador SET nomeUtilizador = :nomeUtilizador, nome = :nome, email = :email, password = :password, tipoUtilizador = :tipoUtilizador WHERE idUtilizador = '$id'";
+
+    //Verificar se nome de utilizador já existe
+    if(!$this->getUserByNomeUtilizador($dados["nomeUtilizador"])) {
+      return $this->executarQuery($sql, $dados);
+    } else {
+      return false;
+    }
+  }
+
+  //Eliminar utilizador 
+  public function eliminarUtilizador($id) {
+    $sql = "UPDATE utilizador SET tipoUtilizador = 6 WHERE idUtilizador = '$id'";
+    $this->executarQuery($sql);
+  }
+
+  //Eliminar permanentemente (Apagar utilizador da BD)
+  public function eliminarPermanente($id) {
+    $sql = "DELETE FROM utilizador WHERE idUtilizador = '$id'";
+    $this->executarQuery($sql);
   }
 
   //Definir as variáveis de sessão
@@ -106,7 +132,7 @@ class Utilizador extends Basedados {
     }
   }
   
-  public function mostrarOpcoesTabela($idUtilizador) {
+  public function mostrarOpcoes($idUtilizador) {
     if(isset($_GET["tab"])) {
       $tab = $_GET["tab"];
     }

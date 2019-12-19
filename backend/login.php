@@ -2,7 +2,6 @@
 
 require_once '../config/init.php';
 
-$bd = new Basedados;
 $user = new Utilizador;
 
 if(isset($_POST["nome"]) && isset($_POST["password"])) {
