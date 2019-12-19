@@ -28,12 +28,7 @@ echo "<a href='logout.php'>Terminar Sessao</a>";
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Administrador</title>
-</head>
+<?php require_once 'includes/header.inc.php'; ?>
 <body style="font-family: sans-serif">
   <h3>Todos os utilizadores ativos</h3>
   <table class="table is-bordered is-striped is-hoverable is-fullwidth">
@@ -134,5 +129,6 @@ echo "<a href='logout.php'>Terminar Sessao</a>";
 <?php endforeach; ?>
   </tbody>
 </table>
+
 </body>
 </html>

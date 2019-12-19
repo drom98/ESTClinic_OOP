@@ -54,10 +54,11 @@ class Utilizador extends Basedados {
   //Editar utilizador
   public function editarUtilizador($id, $dados) {
     $sql = "UPDATE utilizador SET nomeUtilizador = :nomeUtilizador, nome = :nome, email = :email, password = :password, tipoUtilizador = :tipoUtilizador WHERE idUtilizador = '$id'";
+    return $this->executarQuery($sql, $dados);
 
     //Verificar se nome de utilizador já existe
     if(!$this->getUserByNomeUtilizador($dados["nomeUtilizador"])) {
-      return $this->executarQuery($sql, $dados);
+      
     } else {
       return false;
     }
@@ -132,68 +133,37 @@ class Utilizador extends Basedados {
     }
   }
   
-  public function mostrarOpcoes($idUtilizador) {
+  public function botaoEditar($id) {
+    return '
+    <a href="editar-utilizador.php?id='.$id.'" class="button is-link is-light is-small is-fullwidth">
+    <span class="icon">
+      <i class="fas fa-user-check"></i>
+    </span>
+    <span>Editar utilizador</span>
+    </a>
+    ';
+  }
+
+  public function botaoEliminar($id) {
+    return '
+    <a href="eliminar-utilizador.php?id='.$id.'" class="button is-danger is-light is-small is-fullwidth">
+    <span class="icon">
+      <i class="fas fa-user-check"></i>
+    </span>
+    <span>Eliminar utilizador</span>
+    </a>
+    ';
+  }
+
+  public function mostrarOpcoes($id) {
     if(isset($_GET["tab"])) {
       $tab = $_GET["tab"];
     }
 
     switch($tab) {
-      case 'usersPorAprovar':
-        return '
-        <button class="button is-success is-light is-small is-fullwidth" id="btnAprovarUser" name="'.($idUtilizador).'">
-        <span class="icon">
-          <i class="fas fa-user-check"></i>
-        </span>
-        <span>Aprovar utilizador</span>
-      </button>
-        <button class="button is-link is-light is-small is-fullwidth" id="btnEditarUser" name="'.($idUtilizador).'">
-          <span class="icon">
-            <i class="fas fa-user-edit"></i>
-          </span>
-          <span>Editar dados</span>
-        </button>
-        <button class="button is-danger is-light is-small is-fullwidth" id="btnApagarUser" name="'.($idUtilizador).'">
-          <span class="icon">
-            <i class="fas fa-trash"></i>
-          </span>
-          <span>Eliminar utilizador</span>
-        </button>';
-      break;
-      case 'usersEliminados':
-        return '
-        <button class="button is-success is-light is-small is-fullwidth" id="btnRestaurarUser" name="'.($idUtilizador).'">
-        <span class="icon">
-          <i class="fas fa-user-check"></i>
-        </span>
-        <span>Restaurar utilizador</span>
-      </button>
-        <button class="button is-link is-light is-small is-fullwidth" id="btnEditarUser" name="'.($idUtilizador).'">
-          <span class="icon">
-            <i class="fas fa-user-edit"></i>
-          </span>
-          <span>Editar dados</span>
-        </button>
-        <button class="button is-danger is-light is-small is-fullwidth" id="btnApagarPermaUser" name="'.($idUtilizador).'">
-          <span class="icon">
-            <i class="fas fa-trash"></i>
-          </span>
-          <span>Eliminar permanentemente</span>
-        </button>';
-      break;
       case 'utilizadores':
-        return '
-        <button class="button is-link is-light is-small is-fullwidth" id="btnEditarUser" name="'.($idUtilizador).'">
-          <span class="icon">
-            <i class="fas fa-user-edit"></i>
-          </span>
-          <span>Editar dados</span>
-        </button>
-        <button class="button is-danger is-light is-small is-fullwidth" id="btnApagarUser" name="'.($idUtilizador).'">
-          <span class="icon">
-            <i class="fas fa-trash"></i>
-          </span>
-          <span>Eliminar utilizador</span>
-        </button>';
+        echo $this->botaoEditar($id);
+        echo $this->botaoEliminar($id);
       break;
     }
   }
