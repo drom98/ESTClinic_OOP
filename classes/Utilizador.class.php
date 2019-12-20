@@ -35,7 +35,11 @@ class Utilizador extends Basedados {
   //Procurar utilizadores eliminados
   public function getUsersEliminados() {
     $sql = "SELECT U.*, T.descricao FROM utilizador U, tipoUtilizador T WHERE tipoUtilizador = '6' AND T.idTipoUtilizador = U.tipoUtilizador";
-    return $this->executarQuery($sql);
+    if($this->executarQuery($sql)) {
+      return $this->executarQuery($sql);
+    } else {
+      return false;
+    }
   }
 
   //CRUD

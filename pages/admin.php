@@ -18,7 +18,9 @@ if(isset($_SESSION["tipoUtilizador"])) {
   if($_SESSION["tipoUtilizador"] != "1") {
     $user->redirect("permissao");  
   }
-} 
+} else {
+  $user->redirect("permissao");
+}
 
 echo "Bem vindo, " . $_SESSION["nome"];
 
@@ -82,6 +84,7 @@ echo "<a href='logout.php'>Terminar Sessao</a>";
   </tbody>
 </table>
 <h3>Todos os utilizadores eliminados</h3>
+<?php if($utilizadoresEliminados): ?>
   <table class="table is-bordered is-striped is-hoverable is-fullwidth">
   <thead>
     <tr>
@@ -103,7 +106,7 @@ echo "<a href='logout.php'>Terminar Sessao</a>";
       <td><?php echo $utilizador->data ?></td>
       <td><?php echo $user->mostrarOpcoes($utilizador->idUtilizador); ?></td>
     </tr>
-    <?php endforeach; ?>
+    <?php endforeach; endif; ?>
   </tbody>
 </table>
 

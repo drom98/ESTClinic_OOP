@@ -35,7 +35,7 @@ if(isset($_GET["id"])) {
 <html lang="en">
 <?php require_once 'includes/header.inc.php'; ?>
 <body>
-<form action="" method="POST">
+<form action="../backend/editar-utilizador.php?id=<?php echo $dados->idUtilizador ?>" method="POST">
     <div class="field">
       <label class="label">Nome de utilizador:</label>
       <div class="control has-icons-left">
@@ -87,7 +87,7 @@ if(isset($_GET["id"])) {
 
     <div class="field">
       <div class="control">
-        <input type="submit" class="button is-link is-fullwidth" value="Registar">
+        <input type="submit" class="button is-link is-fullwidth" value="Guardar">
       </div>
     </div>
   </form>
