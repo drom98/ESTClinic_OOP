@@ -71,13 +71,19 @@ class Utilizador extends Basedados {
   //Eliminar utilizador 
   public function eliminarUtilizador($id) {
     $sql = "UPDATE utilizador SET tipoUtilizador = 6 WHERE idUtilizador = '$id'";
-    $this->executarQuery($sql);
+    return $this->executarQuery($sql);
   }
 
   //Eliminar permanentemente (Apagar utilizador da BD)
   public function eliminarPermanente($id) {
     $sql = "DELETE FROM utilizador WHERE idUtilizador = '$id'";
-    $this->executarQuery($sql);
+    return $this->executarQuery($sql);
+  }
+
+  //Aprovar utilizador
+  public function aprovarUtilizador($id) {
+    $sql = "UPDATE utilizador SET tipoUtilizador = 5 WHERE idUtilizador = '$id'";
+    return $this->executarQuery($sql);
   }
 
   //Definir as variáveis de sessão
@@ -141,7 +147,7 @@ class Utilizador extends Basedados {
     return '
     <a href="editar-utilizador.php?id='.$id.'" class="button is-link is-light is-small is-fullwidth">
     <span class="icon">
-      <i class="fas fa-user-check"></i>
+      <i class="fas fa-user-edit"></i>
     </span>
     <span>Editar utilizador</span>
     </a>
@@ -150,11 +156,22 @@ class Utilizador extends Basedados {
 
   public function botaoEliminar($id) {
     return '
-    <a href="eliminar-utilizador.php?id='.$id.'" class="button is-danger is-light is-small is-fullwidth">
+    <a href="../backend/eliminar-utilizador.php?id='.$id.'" class="button is-danger is-light is-small is-fullwidth">
+    <span class="icon">
+      <i class="fas fa-trash-alt"></i>
+    </span>
+    <span>Eliminar utilizador</span>
+    </a>
+    ';
+  }
+
+  public function botaoAprovar($id) {
+    return '
+    <a href="../backend/aprovar-utilizador.php?id='.$id.'" class="button is-success is-light is-small is-fullwidth">
     <span class="icon">
       <i class="fas fa-user-check"></i>
     </span>
-    <span>Eliminar utilizador</span>
+    <span>Aprovar utilizador</span>
     </a>
     ';
   }
@@ -168,6 +185,7 @@ class Utilizador extends Basedados {
       case 'utilizadores':
         echo $this->botaoEditar($id);
         echo $this->botaoEliminar($id);
+        echo $this->botaoAprovar($id);
       break;
     }
   }

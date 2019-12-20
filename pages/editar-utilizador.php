@@ -2,32 +2,8 @@
 
 require_once '../config/init.php';
 
-if(isset($_GET["id"])) {
-  $user = new Utilizador;
-  $dados = $user->getUserById($_GET["id"])[0];
-
-  if($_SERVER["REQUEST_METHOD"] == "POST") {
-    if(empty($_POST["nova-password"])) {
-      $passowrd = $_POST["password"];
-    } else {
-      $passowrd = md5($_POST["nova-password"]);
-    }
-    $dados = array(
-      "nomeUtilizador" => $_POST["userName"],
-      "nome" => $_POST["nome"],
-      "email" => $_POST["email"],
-      "password" => $passowrd,
-      "tipoUtilizador" => $_POST["tipoUtilizador"]
-    );
-    if($user->editarUtilizador($_GET["id"], $dados)) {
-      $user->redirect(1);
-    } else {
-      echo($user->erro);
-    }
-  }
-} else {
-  header("location:javascript://history.go(-1)");
-}
+$user = new Utilizador;
+$dados = $user->getUserById($_GET["id"])[0];
 
 ?>
 
@@ -80,9 +56,17 @@ if(isset($_GET["id"])) {
     </div>
 
     <div class="field">
-      <div class="control has-icons-left">
-        <input name="tipoUtilizador" type="hidden" class="input" placeholder="Insira o seu email..." value="<?php echo $dados->tipoUtilizador; ?>">
-      </div>
+      <label class="label">Tipo de utilizador:</label>
+      <input class="is-checkradio is-warning is-small" type="radio" name="tipoUtilizador" <?php echo ($dados->tipoUtilizador == "1") ? "checked" : '' ?> value="1">
+      <label for="admin-radio">Administrador</label>
+      <input class="is-checkradio is-link is-small" type="radio" name="tipoUtilizador" <?php echo ($dados->tipoUtilizador == "2") ? "checked" : '' ?> value="2">
+      <label for="medico-radio">Médico</label>
+      <input class="is-checkradio is-link is-small" type="radio" name="tipoUtilizador" <?php echo ($dados->tipoUtilizador == "3") ? "checked" : '' ?> value="3">
+      <label for="enf-radio">Enfermeiro</label>
+      <input class="is-checkradio is-link is-small" type="radio" name="tipoUtilizador" <?php echo ($dados->tipoUtilizador == "5") ? "checked" : '' ?> value="5">
+      <label for="utente-radio">Utente</label>
+      <input class="is-checkradio is-link is-small" type="radio" name="tipoUtilizador" <?php echo ($dados->tipoUtilizador == "4") ? "checked" : '' ?> value="4">
+      <label for="nv-radio">Não verificado</label>
     </div>
 
     <div class="field">

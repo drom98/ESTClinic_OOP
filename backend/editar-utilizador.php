@@ -4,7 +4,6 @@ require_once '../config/init.php';
 
 if(isset($_GET["id"])) {
   $user = new Utilizador;
-  $dados = $user->getUserById($_GET["id"])[0];
 
   if($_SERVER["REQUEST_METHOD"] == "POST") {
     if(empty($_POST["nova-password"])) {
@@ -19,6 +18,7 @@ if(isset($_GET["id"])) {
       "password" => $passowrd,
       "tipoUtilizador" => $_POST["tipoUtilizador"]
     );
+
     if($user->editarUtilizador($_GET["id"], $dados)) {
       $user->redirect(1);
     } else {
