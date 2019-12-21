@@ -121,7 +121,7 @@ class Utilizador extends Basedados {
         header("Location: ../pages/login.php?erro=aprovar");
       break;
       case '5':
-        header("Location: ../pages/utente/utente.php");
+        header("Location: ../pages/utente.php");
       break;
       case '6':
         header("Location: ../pages/login.php?erro=eliminado");

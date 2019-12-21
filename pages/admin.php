@@ -33,7 +33,8 @@ echo "<a href='logout.php'>Terminar Sessao</a>";
 <!DOCTYPE html>
 <html lang="en">
 <?php require_once 'includes/header.inc.php'; ?>
-<body style="font-family: sans-serif">
+<?php require_once 'includes/navbar.inc.php'; ?>
+<body style="font-family: sans-serif" class="has-navbar-fixed-top">
   <h3>Todos os utilizadores ativos</h3>
   <table class="table is-bordered is-striped is-hoverable is-fullwidth">
   <thead>
