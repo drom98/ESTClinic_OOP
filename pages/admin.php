@@ -24,140 +24,38 @@ if(isset($_SESSION["tipoUtilizador"])) {
   $user->redirect("permissao");
 }
 
-echo "Bem vindo, " . $_SESSION["nome"];
-
-echo "<a href='logout.php'>Terminar Sessao</a>";
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <?php require_once 'includes/header.inc.php'; ?>
 <?php require_once 'includes/navbar.inc.php'; ?>
-<body style="font-family: sans-serif" class="has-navbar-fixed-top">
-  <h3>Todos os utilizadores ativos</h3>
-  <table class="table is-bordered is-striped is-hoverable is-fullwidth">
-  <thead>
-    <tr>
-      <th>Nome login</abbr></th>
-      <th>Nome</abbr></th>
-      <th>Email</abbr></th>
-      <th>Tipo</abbr></th>
-      <th>Utilizador desde</abbr></th>
-      <th>Opções</abbr></th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php foreach($utilizadoresAtivos as $utilizador): ?>
-    <tr>
-      <td><?php echo $utilizador->nomeUtilizador ?></td>
-      <td><?php echo $utilizador->nome ?></td>
-      <td><?php echo $utilizador->email ?></td>
-      <td><?php echo $utilizador->descricao ?></td>
-      <td><?php echo $utilizador->data ?></td>
-      <td><?php echo $user->mostrarOpcoes($utilizador->idUtilizador); ?></td>
-    </tr>
-    <?php endforeach; ?>
-  </tbody>
-</table>
+<body class="has-navbar-fixed-top">
+  <section class="section">
+    <div class="columns">
+      <div class="column is-one-fifth">
+        <?php new Menu($_SESSION["tipoUtilizador"]); ?>
+      </div>
+      <div class="column">
+        <?php 
+        if(isset($_GET["menu"])) {
+          switch($_GET["menu"]) {
+            case 'utilizadores':
+              require_once 'includes/tabelas/tabela-utilizadores.php';
+            break;
+            case 'usersPorAprovar':
+              require_once 'includes/tabelas/tabela-utilizadores-por-aprovar.php';
+            break;
+            case 'usersEliminados':
+              require_once 'includes/tabelas/tabela-utilizadores-eliminados.php';
+            break;
+          }
+        }
+        ?>
+      </div>
+    </div>
+  </section>
 
-<h3>Todos os utilizadores por aprovar</h3>
-  <table class="table is-bordered is-striped is-hoverable is-fullwidth">
-  <thead>
-    <tr>
-      <th>Nome login</abbr></th>
-      <th>Nome</abbr></th>
-      <th>Email</abbr></th>
-      <th>Tipo</abbr></th>
-      <th>Utilizador desde</abbr></th>
-      <th>Opções</abbr></th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php foreach($utilizadoresPorAprovar as $utilizador): ?>
-    <tr>
-      <td><?php echo $utilizador->nomeUtilizador ?></td>
-      <td><?php echo $utilizador->nome ?></td>
-      <td><?php echo $utilizador->email ?></td>
-      <td><?php echo $utilizador->descricao ?></td>
-      <td><?php echo $utilizador->data ?></td>
-      <td><?php echo $user->mostrarOpcoes($utilizador->idUtilizador); ?></td>
-    </tr>
-    <?php endforeach; ?>
-  </tbody>
-</table>
-<h3>Todos os utilizadores eliminados</h3>
-<?php if($utilizadoresEliminados): ?>
-  <table class="table is-bordered is-striped is-hoverable is-fullwidth">
-  <thead>
-    <tr>
-      <th>Nome login</abbr></th>
-      <th>Nome</abbr></th>
-      <th>Email</abbr></th>
-      <th>Tipo</abbr></th>
-      <th>Utilizador desde</abbr></th>
-      <th>Opções</abbr></th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php foreach($utilizadoresEliminados as $utilizador): ?>
-    <tr>
-      <td><?php echo $utilizador->nomeUtilizador ?></td>
-      <td><?php echo $utilizador->nome ?></td>
-      <td><?php echo $utilizador->email ?></td>
-      <td><?php echo $utilizador->descricao ?></td>
-      <td><?php echo $utilizador->data ?></td>
-      <td><?php echo $user->mostrarOpcoes($utilizador->idUtilizador); ?></td>
-    </tr>
-    <?php endforeach; endif; ?>
-  </tbody>
-</table>
-
-<h3>Consultas Enfermeiro</h3>
-  <table class="table is-bordered is-striped is-hoverable is-fullwidth">
-  <thead>
-    <tr>
-      <th>Data</abbr></th>
-      <th>Nome Enfermeiro</abbr></th>
-      <th>Tratamento</abbr></th>
-      <th>estado</abbr></th>
-      <th>Opções</abbr></th>
-    </tr>
-  </thead>
-  <tbody>
-  <?php foreach($todasConsEnf as $consulta): ?>
-  <tr>
-    <td><?php echo $consulta->data ?></td>
-    <td><?php echo $consulta->nome ?></td>
-    <td><?php echo $consulta->descricao ?></td>
-    <td><?php echo $consulta->estado ?></td>
-  </tr>
-<?php endforeach; ?>
-  </tbody>
-</table>
-
-<h3>Consultas Médico</h3>
-  <table class="table is-bordered is-striped is-hoverable is-fullwidth">
-  <thead>
-    <tr>
-      <th>Data</abbr></th>
-      <th>Nome Médico</abbr></th>
-      <th>Tratamento</abbr></th>
-      <th>estado</abbr></th>
-      <th>Opções</abbr></th>
-    </tr>
-  </thead>
-  <tbody>
-  <?php foreach($todasConsMed as $consulta): ?>
-  <tr>
-    <td><?php echo $consulta->data ?></td>
-    <td><?php echo $consulta->nome ?></td>
-    <td><?php echo $consulta->descricao ?></td>
-    <td><?php echo $consulta->estado ?></td>
-  </tr>
-<?php endforeach; ?>
-  </tbody>
-</table>
   <hr>
   <h1>Escolher enfermeiro</h1>
   <select name="enfermeiros">
