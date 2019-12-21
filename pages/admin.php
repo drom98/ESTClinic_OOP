@@ -12,6 +12,8 @@ $utilizadoresEliminados = $user->getUsersEliminados();
 //Instanciar objeto da classe Consulta
 $consulta = new Consulta;
 $todasConsEnf = $consulta->getTodasConsultEnf();
+$todasConsMed = $consulta->getTodasConsultMed();
+$enfermeiros = $consulta->getTodosEnf();
 
 //Proteger página
 if(isset($_SESSION["tipoUtilizador"])) {
@@ -133,5 +135,34 @@ echo "<a href='logout.php'>Terminar Sessao</a>";
   </tbody>
 </table>
 
+<h3>Consultas Médico</h3>
+  <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+  <thead>
+    <tr>
+      <th>Data</abbr></th>
+      <th>Nome Médico</abbr></th>
+      <th>Tratamento</abbr></th>
+      <th>estado</abbr></th>
+      <th>Opções</abbr></th>
+    </tr>
+  </thead>
+  <tbody>
+  <?php foreach($todasConsMed as $consulta): ?>
+  <tr>
+    <td><?php echo $consulta->data ?></td>
+    <td><?php echo $consulta->nome ?></td>
+    <td><?php echo $consulta->descricao ?></td>
+    <td><?php echo $consulta->estado ?></td>
+  </tr>
+<?php endforeach; ?>
+  </tbody>
+</table>
+  <hr>
+  <h1>Escolher enfermeiro</h1>
+  <select name="enfermeiros">
+  <?php foreach($enfermeiros as $enfermeiro): ?>
+    <option value="<?php echo $enfermeiro->idUtilizador ?>"><?php echo $enfermeiro->nome ?></option>
+  <?php endforeach; ?>
+  </select>
 </body>
 </html>

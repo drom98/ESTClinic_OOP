@@ -22,13 +22,20 @@ class Basedados {
     }
   }
 
-  public function executarQuery($query, $dados = null) {
+  public function executarQuery($query) {
+    $this->stmt = $this->conn->prepare($query);
+    $this->stmt->execute();
+    return $this->stmt->fetchAll(PDO::FETCH_OBJ);
+  }
+
+  public function updateQuery($query, $dados = null) {
     $this->stmt = $this->conn->prepare($query);
     if($dados == null) {
       $this->stmt->execute();
-      return $this->stmt->fetchAll(PDO::FETCH_OBJ);
+      return $this->stmt->rowCount();
     } else {
-      return $this->stmt->execute($dados);
+      $this->stmt->execute($dados);
+      return $this->stmt->rowCount();
     }
   }
 }

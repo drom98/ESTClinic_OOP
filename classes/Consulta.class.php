@@ -24,4 +24,14 @@ class Consulta extends Basedados {
     $sql = "SELECT * FROM Consulta_Medicos";
     return $this->executarQuery($sql);
   }
+
+  public function getTodosEnf() {
+    $sql = "SELECT * FROM utilizador WHERE tipoUtilizador = '3'";
+    return $this->executarQuery($sql);
+  }
+
+  public function getTodosMed() {
+    $sql = "SELECT * FROM utilizador WHERE tipoUtilizador = '2'";
+    return $this->executarQuery($sql);
+  }
 }

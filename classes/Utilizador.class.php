@@ -49,7 +49,7 @@ class Utilizador extends Basedados {
 
     //Verificar se nome de utilizador já existe
     if(!$this->getUserByNomeUtilizador($dados["nomeUtilizador"])) {
-      return $this->executarQuery($sql, $dados);
+      return $this->updateQuery($sql, $dados);
     } else {
       return false;
     }
@@ -58,7 +58,7 @@ class Utilizador extends Basedados {
   //Editar utilizador
   public function editarUtilizador($id, $dados) {
     $sql = "UPDATE utilizador SET nomeUtilizador = :nomeUtilizador, nome = :nome, email = :email, password = :password, tipoUtilizador = :tipoUtilizador WHERE idUtilizador = '$id'";
-    return $this->executarQuery($sql, $dados);
+    return $this->updateQuery($sql, $dados);
 
     //Verificar se nome de utilizador já existe
     if(!$this->getUserByNomeUtilizador($dados["nomeUtilizador"])) {
@@ -71,19 +71,19 @@ class Utilizador extends Basedados {
   //Eliminar utilizador 
   public function eliminarUtilizador($id) {
     $sql = "UPDATE utilizador SET tipoUtilizador = 6 WHERE idUtilizador = '$id'";
-    return $this->executarQuery($sql);
+    return $this->updateQuery($sql);
   }
 
   //Eliminar permanentemente (Apagar utilizador da BD)
   public function eliminarPermanente($id) {
     $sql = "DELETE FROM utilizador WHERE idUtilizador = '$id'";
-    return $this->executarQuery($sql);
+    return $this->updateQuery($sql);
   }
 
   //Aprovar utilizador
   public function aprovarUtilizador($id) {
     $sql = "UPDATE utilizador SET tipoUtilizador = 5 WHERE idUtilizador = '$id'";
-    return $this->executarQuery($sql);
+    return $this->updateQuery($sql);
   }
 
   //Definir as variáveis de sessão
@@ -177,16 +177,17 @@ class Utilizador extends Basedados {
   }
 
   public function mostrarOpcoes($id) {
+    /*
     if(isset($_GET["tab"])) {
       $tab = $_GET["tab"];
     }
 
     switch($tab) {
-      case 'utilizadores':
+      case 'utilizadores': */
         echo $this->botaoEditar($id);
         echo $this->botaoEliminar($id);
         echo $this->botaoAprovar($id);
-      break;
-    }
+    /*  break;
+    } */
   }
 }
