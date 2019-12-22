@@ -54,6 +54,9 @@ if(isset($_SESSION["tipoUtilizador"])) {
             case 'usersEliminados':
               require_once 'includes/tabelas/tabela-utilizadores-eliminados.php';
             break;
+            case 'dadosPessoais':
+              require_once 'dados-pessoais.php';
+            break;
           }
         }
         ?>

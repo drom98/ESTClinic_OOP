@@ -3,6 +3,8 @@
 $user = new Utilizador;
 $utilizadoresPorAprovar = $user->getUsersPorAprovar();
 
+$tabelaVazia = new Mensagem("Tabela vazia", "link", "Não foram encontrados registos nesta tabela");
+
 ?>
 <?php if($utilizadoresPorAprovar): ?>
 <h3>Todos os utilizadores ativos</h3>
@@ -30,4 +32,5 @@ $utilizadoresPorAprovar = $user->getUsersPorAprovar();
     <?php endforeach; ?>
   </tbody>
 </table>
+<?php else: $tabelaVazia->getMensagem(); ?>
 <?php endif; ?>

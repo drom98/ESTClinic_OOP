@@ -95,6 +95,7 @@ class Utilizador extends Basedados {
     $_SESSION["email"] = $utilizador->email;
     $_SESSION["password"] = $utilizador->password;
     $_SESSION["tipoUtilizador"] = $utilizador->tipoUtilizador;
+    $_SESSION["data"] = $utilizador->data;
   }
 
   //Encerrar sessão

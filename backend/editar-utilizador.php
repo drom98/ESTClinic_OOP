@@ -7,15 +7,15 @@ if(isset($_GET["id"])) {
 
   if($_SERVER["REQUEST_METHOD"] == "POST") {
     if(empty($_POST["nova-password"])) {
-      $passowrd = $_POST["password"];
+      $password = $_POST["password"];
     } else {
-      $passowrd = md5($_POST["nova-password"]);
+      $password = md5($_POST["nova-password"]);
     }
     $dados = array(
       "nomeUtilizador" => $_POST["userName"],
       "nome" => $_POST["nome"],
       "email" => $_POST["email"],
-      "password" => $passowrd,
+      "password" => $password,
       "tipoUtilizador" => $_POST["tipoUtilizador"]
     );
 

@@ -3,6 +3,8 @@
 $user = new Utilizador;
 $utilizadoresEliminados = $user->getUsersEliminados();
 
+$tabelaVazia = new Mensagem("Tabela vazia", "link", "Não foram encontrados registos nesta tabela");
+
 ?>
 <?php if($utilizadoresEliminados): ?>
 <h3>Todos os utilizadores ativos</h3>
@@ -30,13 +32,5 @@ $utilizadoresEliminados = $user->getUsersEliminados();
     <?php endforeach; ?>
   </tbody>
 </table>
-    <?php else: echo "
-      <div class='has-text-centered' style='margin-top: 30vh'>
-      <span class='icon has-text-dark'>
-      <i class='fas fa-table fa-5x'></i>
-    </span>
-    <h1 class='title'>Não existem dados.</h1>
-    <p class='subtitle'>Não foram encontrados registos nesta tabela.</p>
-      </div>
-    " ?>
+    <?php else: $tabelaVazia->getMensagem(); ?>
 <?php endif; ?>
