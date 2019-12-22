@@ -71,7 +71,8 @@ $dados = $user->getUserById($_GET["id"])[0];
 
     <div class="field">
       <div class="control">
-        <input type="submit" class="button is-link is-fullwidth" value="Guardar">
+        <a href="javascript:history.go(-1)" class="button is-normal">Cancelar</a>
+        <input type="submit" class="button is-link" value="Guardar">
       </div>
     </div>
   </form>

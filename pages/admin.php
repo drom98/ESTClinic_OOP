@@ -2,11 +2,6 @@
 
 session_start();
 require_once '../config/init.php';
-/*
-if(isset($_SESSION["sucesso"])) {
-  echo "<script>location.reload();</script>";
-  unset($_SESSION["sucesso"]);
-}*/
 
 //Instanciar objeto da classe Utilizador
 $user = new Utilizador;
@@ -66,6 +61,9 @@ if(isset($_SESSION["tipoUtilizador"])) {
             break;
             case 'editarUtilizador':
               require_once 'editar-utilizador.php';
+            break;
+            case 'adicionarUtilizador':
+              require_once 'registo.php';
             break;
           }
         }

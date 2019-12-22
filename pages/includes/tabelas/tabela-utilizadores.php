@@ -2,12 +2,29 @@
 
 $user = new Utilizador;
 $utilizadoresAtivos = $user->getUsersAtivos();
+$nrUtilizadores = count($utilizadoresAtivos);
 
 $tabelaVazia = new Mensagem("Tabela vazia", "link", "Não foram encontrados registos nesta tabela");
 
 ?>
 <?php if($utilizadoresAtivos): ?>
-<h3>Todos os utilizadores ativos</h3>
+<div class="level has-background-light" style="padding: 15px; border-radius: 5px;">
+  <div class="level-left">
+    <div class="level-item">
+      <p class="subtitle is-size-5"><strong><?php echo $nrUtilizadores?></strong> Utilizadores ativos</p>
+    </div>
+    <div class="level-item">
+      <div class="field has-addons">
+        <p class="control">
+          <input id="search" class="input is-small" type="text" placeholder="Procurar utilizador">
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="level-right">
+    <a class="button is-link is-small" href="?menu=adicionarUtilizador">Adicionar</a>
+  </div>
+</div>
   <table class="table is-bordered is-striped is-hoverable is-fullwidth">
   <thead>
     <tr>
