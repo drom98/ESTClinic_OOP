@@ -146,7 +146,7 @@ class Utilizador extends Basedados {
   
   public function botaoEditar($id) {
     return '
-    <a href="editar-utilizador.php?id='.$id.'" class="button is-link is-light is-small is-fullwidth">
+    <a href="?menu=editarUtilizador&id='.$id.'" class="button is-link is-light is-small is-fullwidth">
     <span class="icon">
       <i class="fas fa-user-edit"></i>
     </span>

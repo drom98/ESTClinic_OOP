@@ -44,11 +44,10 @@ class Menu {
     <span class="icon">
       <i class="fas fa-calendar-check fa-lg has-text-link"></i>
     </span>
-    Marcações
+    Consultas
   </p>
   <ul class="menu-list">
-    <li><a href="?menu=gerirMarcacoes" id="gerirMarcacoes">Marcações ativas</a></li>
-    <li><a href="?menu=aprovarMarcacoes" id="aprovarMarcacoes">Marcações por aprovar</a></li>
+    <li><a href="?menu=gerirMarcacoes" id="gerirMarcacoes">Consultas marcadas</a></li>
   </ul>
   
   <p class="menu-label">

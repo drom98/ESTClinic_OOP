@@ -2,11 +2,11 @@
 
 session_start();
 require_once '../config/init.php';
-
+/*
 if(isset($_SESSION["sucesso"])) {
   echo "<script>location.reload();</script>";
   unset($_SESSION["sucesso"]);
-}
+}*/
 
 //Instanciar objeto da classe Utilizador
 $user = new Utilizador;
@@ -36,6 +36,10 @@ if(isset($_SESSION["tipoUtilizador"])) {
 <?php require_once 'includes/header.inc.php'; ?>
 <?php require_once 'includes/navbar.inc.php'; ?>
 <body class="has-navbar-fixed-top">
+  <?php 
+  $hero = new Hero("Bem vindo, " . $_SESSION["nome"], "Página de administrador", "link");
+  $hero->printHero();
+  ?>
   <section class="section">
     <div class="columns">
       <div class="column is-one-fifth">
@@ -56,6 +60,12 @@ if(isset($_SESSION["tipoUtilizador"])) {
             break;
             case 'dadosPessoais':
               require_once 'dados-pessoais.php';
+            break;
+            case 'gerirMarcacoes':
+              require_once 'consultas-marcadas.php';
+            break;
+            case 'editarUtilizador':
+              require_once 'editar-utilizador.php';
             break;
           }
         }

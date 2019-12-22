@@ -2,6 +2,11 @@
 
 class Consulta extends Basedados {
 
+  public function getConsultasMarcadas() {
+    $sql = "SELECT CE.*, CM.* FROM Consulta_Enfermeiro CE, Consulta_Medicos CM WHERE CE.estado = 1 AND CM.estado = 1";
+    return $this->executarQuery($sql);
+  }
+
   public function getConsultaEnf($idConsulta) {
     $sql = "SELECT * FROM Consulta_Enfermeiro WHERE idConsulta = $idConsulta";
     return $this->executarQuery($sql);
