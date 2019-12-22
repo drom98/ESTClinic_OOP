@@ -106,10 +106,10 @@ class Utilizador extends Basedados {
   }
 
   //Redirecionar o utilizador para a sua página consoante o seu tipo
-  public function redirect($tipoUtilizador) {
+  public function redirect($tipoUtilizador, $parametro = null) {
     switch($tipoUtilizador) {
       case '1':
-        header("Location: ../pages/admin.php");
+        header("Location: ../pages/admin.php" . "?" . $parametro);
       break;
       case '2':
         header("Location: ../pages/medico.php");
@@ -176,18 +176,34 @@ class Utilizador extends Basedados {
     ';
   }
 
+  public function botaoRestaurar($id) {
+    return '
+    <a href="../backend/aprovar-utilizador.php?id='.$id.'" class="button is-success is-light is-small is-fullwidth">
+    <span class="icon">
+      <i class="fas fa-user-check"></i>
+    </span>
+    <span>Restaurar utilizador</span>
+    </a>
+    ';
+  }
+
   public function mostrarOpcoes($id) {
-    /*
-    if(isset($_GET["tab"])) {
-      $tab = $_GET["tab"];
+    if(isset($_GET["menu"])) {
+      $tab = $_GET["menu"];
     }
 
     switch($tab) {
-      case 'utilizadores': */
+      case 'utilizadores':
         echo $this->botaoEditar($id);
         echo $this->botaoEliminar($id);
+      break;
+      case 'usersPorAprovar':
+        echo $this->botaoEditar($id);
         echo $this->botaoAprovar($id);
-    /*  break;
-    } */
+        echo $this->botaoEliminar($id);
+      break;
+      case 'usersEliminados':
+        echo $this->botaoRestaurar($id);
+    } 
   }
 }

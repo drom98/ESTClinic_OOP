@@ -20,11 +20,12 @@ if(isset($_GET["id"])) {
     );
 
     if($user->editarUtilizador($_GET["id"], $dados)) {
-      $user->redirect(1);
+      $_SESSION["sucesso"] = "ok";
+      $user->redirect(1, "menu=utilizadores");
     } else {
       echo($user->erro);
     }
   }
 } else {
-  header("location:javascript://history.go(-1)");
+  echo "<script>window.history.back();</script>";
 }

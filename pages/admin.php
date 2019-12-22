@@ -3,6 +3,11 @@
 session_start();
 require_once '../config/init.php';
 
+if(isset($_SESSION["sucesso"])) {
+  echo "<script>location.reload();</script>";
+  unset($_SESSION["sucesso"]);
+}
+
 //Instanciar objeto da classe Utilizador
 $user = new Utilizador;
 $utilizadoresAtivos = $user->getUsersAtivos();
