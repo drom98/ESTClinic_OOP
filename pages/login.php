@@ -1,3 +1,4 @@
+<?php require_once '../config/init.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <?php require_once 'includes/header.inc.php'; ?>
@@ -11,7 +12,7 @@
             <div class="card">
               <div class="card-content">
                 <?php if(isset($_SESSION["id"])): ?>
-                <?php require_once 'includes/mensagens/sessao-inciada.inc.php'; ?>
+                <?php $mensagem = new Mensagem("Já tem sessão iniciada", "link"); $mensagem->getMensagem() ?>
                 <?php else: ?>
                 <h1 class="title has-text-link is-4 has-text-centered">Iniciar sessão</h1>
                 <h2 class="subtitle is-6 has-text-centered">Entre com a sua conta.</h2>

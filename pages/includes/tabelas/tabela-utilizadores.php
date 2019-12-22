@@ -25,7 +25,7 @@ $tabelaVazia = new Mensagem("Tabela vazia", "link", "Não foram encontrados regi
     <a class="button is-link is-small" href="?menu=adicionarUtilizador">Adicionar</a>
   </div>
 </div>
-  <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+<table class="table is-bordered is-striped is-hoverable is-fullwidth">
   <thead>
     <tr>
       <th>Nome login</abbr></th>

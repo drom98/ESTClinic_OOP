@@ -188,6 +188,17 @@ class Utilizador extends Basedados {
     ';
   }
 
+  public function botaoEliminarPerma($id) {
+    return '
+    <a href="../backend/eliminar-perma-utilizador.php?id='.$id.'" class="button is-danger is-light is-small is-fullwidth">
+    <span class="icon">
+      <i class="fas fa-trash-alt"></i>
+    </span>
+    <span>Eliminar permanentemente</span>
+    </a>
+    ';
+  }
+
   public function mostrarOpcoes($id) {
     if(isset($_GET["menu"])) {
       $tab = $_GET["menu"];
@@ -205,6 +216,7 @@ class Utilizador extends Basedados {
       break;
       case 'usersEliminados':
         echo $this->botaoRestaurar($id);
+        echo $this->botaoEliminarPerma($id);
     } 
   }
 }

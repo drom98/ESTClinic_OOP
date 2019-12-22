@@ -2,18 +2,13 @@
 
 class Consulta extends Basedados {
 
-  public function getConsultasMarcadas() {
-    $sql = "SELECT CE.*, CM.* FROM Consulta_Enfermeiro CE, Consulta_Medicos CM WHERE CE.estado = 1 AND CM.estado = 1";
-    return $this->executarQuery($sql);
-  }
-
   public function getConsultaEnf($idConsulta) {
     $sql = "SELECT * FROM Consulta_Enfermeiro WHERE idConsulta = $idConsulta";
     return $this->executarQuery($sql);
   }
 
   public function getTodasConsultEnf() {
-    $sql = "SELECT CE.data, CE.estado, U.nome, T.descricao, UE.nome FROM Consulta_Enfermeiro CE, utilizador U, Tratamentos T, utilizador UE 
+    $sql = "SELECT CE.idConsulta, CE.data, CE.estado, U.nome, T.descricao, UE.nome FROM Consulta_Enfermeiro CE, utilizador U, Tratamentos T, utilizador UE 
     WHERE CE.idUtilizador = U.idUtilizador AND 
     CE.idTratamento = T.idTratamento AND
     CE.idEnfermeiro = UE.idUtilizador";
@@ -26,7 +21,10 @@ class Consulta extends Basedados {
   }
 
   public function getTodasConsultMed() {
-    $sql = "SELECT * FROM Consulta_Medicos";
+    $sql = "SELECT CM.idConsulta, CM.data, CM.estado, U.nome, T.descricao, UM.nome FROM Consulta_Medicos CM, utilizador U, Especialidades T, utilizador UM 
+    WHERE CM.idUtilizador = U.idUtilizador AND 
+    CM.idEspecialidade = T.idEspecialidade AND
+    CM.idMedico = UM.idUtilizador";
     return $this->executarQuery($sql);
   }
 
@@ -38,5 +36,33 @@ class Consulta extends Basedados {
   public function getTodosMed() {
     $sql = "SELECT * FROM utilizador WHERE tipoUtilizador = '2'";
     return $this->executarQuery($sql);
+  }
+
+  //Botões de gestão
+  public function botaoEditar($id) {
+    return '
+    <a href="?menu=editarUtilizador&id='.$id.'" class="button is-link is-light is-small is-fullwidth">
+    <span class="icon">
+      <i class="fas fa-calendar-alt"></i>
+    </span>
+    <span>Editar consulta</span>
+    </a>
+    ';
+  }
+
+  public function botaoEliminar($id) {
+    return '
+    <a href="?menu=editarUtilizador&id='.$id.'" class="button is-danger is-light is-small is-fullwidth">
+    <span class="icon">
+      <i class="fas fa-calendar-times"></i>
+    </span>
+    <span>Eliminar consulta</span>
+    </a>
+    ';
+  }
+
+  public function mostrarBotoes($id) {
+    echo $this->botaoEditar($id);
+    echo $this->botaoEliminar($id);
   }
 }
