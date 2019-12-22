@@ -31,9 +31,9 @@ $utilizadoresEliminados = $user->getUsersEliminados();
   </tbody>
 </table>
     <?php else: echo "
-      <div class='has-text-centered'>
-      <span class='icon has-text-link'>
-      <i class='fas fa-table fa-7x'></i>
+      <div class='has-text-centered' style='margin-top: 30vh'>
+      <span class='icon has-text-dark'>
+      <i class='fas fa-table fa-5x'></i>
     </span>
     <h1 class='title'>Não existem dados.</h1>
     <p class='subtitle'>Não foram encontrados registos nesta tabela.</p>
