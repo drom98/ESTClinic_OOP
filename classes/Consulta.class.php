@@ -48,6 +48,12 @@ class Consulta extends Basedados {
     return $this->executarQuery($sql);
   }
 
+  //Gestão
+  public function editarTratamento($id, $dados) {
+    $sql = "UPDATE Consulta_Enfermeiro SET idTratamento = :idTratamento, idEnfermeiro = :idEnfermeiro, data = :data, estado = :idEstado WHERE idConsulta = '$id'";
+    return $this->updateQuery($sql, $dados);
+  }
+
   //Botões de gestão
   public function botaoEditarEnf($id) {
     return '
