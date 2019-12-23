@@ -20,6 +20,11 @@ class Consulta extends Basedados {
     return $this->executarQuery($sql);
   }
 
+  public function getEstados() {
+    $sql = "SELECT * FROM estadoConsultas";
+    return $this->executarQuery($sql);
+  }
+
   public function getConsultaMed($idConsulta) {
     $sql = "SELECT * FROM Consulta_Medicos WHERE idConsulta = $idConsulta";
     return $this->executarQuery($sql);
