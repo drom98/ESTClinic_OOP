@@ -11,7 +11,7 @@ class Consulta extends Basedados {
     $sql = "SELECT CE.idConsulta, CE.data, CE.estado, U.nome utente, T.descricao, UE.nome FROM Consulta_Enfermeiro CE, utilizador U, Tratamentos T, utilizador UE 
     WHERE CE.idUtilizador = U.idUtilizador AND 
     CE.idTratamento = T.idTratamento AND
-    CE.idEnfermeiro = UE.idUtilizador";
+    CE.idEnfermeiro = UE.idUtilizador AND estado = 2";
     return $this->executarQuery($sql);
   }
 
@@ -39,7 +39,7 @@ class Consulta extends Basedados {
     $sql = "SELECT CM.idConsulta, CM.data, CM.estado, U.nome utente, T.descricao, UM.nome FROM Consulta_Medicos CM, utilizador U, Especialidades T, utilizador UM 
     WHERE CM.idUtilizador = U.idUtilizador AND 
     CM.idEspecialidade = T.idEspecialidade AND
-    CM.idMedico = UM.idUtilizador";
+    CM.idMedico = UM.idUtilizador AND estado = 2";
     return $this->executarQuery($sql);
   }
 
@@ -50,6 +50,22 @@ class Consulta extends Basedados {
 
   public function getTodosMed() {
     $sql = "SELECT * FROM utilizador WHERE tipoUtilizador = '2'";
+    return $this->executarQuery($sql);
+  }
+
+  public function getTratamentosConcluidas() {
+    $sql = "SELECT CE.idConsulta, CE.data, CE.estado, U.nome utente, T.descricao, UE.nome FROM Consulta_Enfermeiro CE, utilizador U, Tratamentos T, utilizador UE 
+    WHERE CE.idUtilizador = U.idUtilizador AND 
+    CE.idTratamento = T.idTratamento AND
+    CE.idEnfermeiro = UE.idUtilizador AND estado = 3";
+    return $this->executarQuery($sql);
+  }
+
+  public function getConsultasConcluidas() {
+    $sql = "SELECT CM.idConsulta, CM.data, CM.estado, U.nome utente, T.descricao, UM.nome FROM Consulta_Medicos CM, utilizador U, Especialidades T, utilizador UM 
+    WHERE CM.idUtilizador = U.idUtilizador AND 
+    CM.idEspecialidade = T.idEspecialidade AND
+    CM.idMedico = UM.idUtilizador AND estado = 3";
     return $this->executarQuery($sql);
   }
 
