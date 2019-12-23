@@ -25,13 +25,18 @@ class Consulta extends Basedados {
     return $this->executarQuery($sql);
   }
 
+  public function getTipoConsultas() {
+    $sql = "SELECT * FROM Especialidades";
+    return $this->executarQuery($sql);
+  }
+
   public function getConsultaMed($idConsulta) {
     $sql = "SELECT * FROM Consulta_Medicos WHERE idConsulta = $idConsulta";
     return $this->executarQuery($sql);
   }
 
   public function getTodasConsultMed() {
-    $sql = "SELECT CM.idConsulta, CM.data, CM.estado, U.nome, T.descricao, UM.nome FROM Consulta_Medicos CM, utilizador U, Especialidades T, utilizador UM 
+    $sql = "SELECT CM.idConsulta, CM.data, CM.estado, U.nome utente, T.descricao, UM.nome FROM Consulta_Medicos CM, utilizador U, Especialidades T, utilizador UM 
     WHERE CM.idUtilizador = U.idUtilizador AND 
     CM.idEspecialidade = T.idEspecialidade AND
     CM.idMedico = UM.idUtilizador";
@@ -84,7 +89,7 @@ class Consulta extends Basedados {
 
   public function botaoEditarMed($id) {
     return '
-    <a href="editar-consulta.php?id='.$id.'&tipo=consulta" class="button is-link is-light is-small is-fullwidth">
+    <a href="?menu=editarTratamento&id='.$id.'&tipo=consulta" class="button is-link is-light is-small is-fullwidth">
     <span class="icon">
       <i class="fas fa-calendar-alt"></i>
     </span>

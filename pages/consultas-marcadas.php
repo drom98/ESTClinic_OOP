@@ -49,9 +49,11 @@ date_default_timezone_set('Europe/Lisbon');
 </table>
     <?php else: $tabelaVazia->getMensagem(); ?>
 <?php endif; ?>
+
 <hr>
+
 <?php if($consultasMedico): ?>
-<?php $nrConsultasMed = count($nrConsultasMed); ?>
+<?php $nrConsultasMed = count($consultasMedico); ?>
 <div class="level has-background-light" style="padding: 15px; border-radius: 5px;">
   <div class="level-left">
     <div class="level-item">
@@ -66,6 +68,7 @@ date_default_timezone_set('Europe/Lisbon');
   <thead>
     <tr>
       <th>Data</abbr></th>
+      <th>Nome utente</abbr></th>
       <th>Nome enfermeiro</abbr></th>
       <th>Tratamento</abbr></th>
       <th>Opções</abbr></th>
@@ -75,6 +78,7 @@ date_default_timezone_set('Europe/Lisbon');
     <?php foreach($consultasMedico as $consulta): ?>
     <tr>
       <td><?php echo $consulta->data ?></td>
+      <td><?php echo $consulta->utente ?></td>
       <td><?php echo $consulta->nome ?></td>
       <td><?php echo $consulta->descricao ?></td>
       <td><?php echo $consultas->mostrarBotoesMed($consulta->idConsulta); ?></td>

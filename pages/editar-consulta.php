@@ -6,6 +6,9 @@ $consulta = new Consulta;
 
 $enfermeiros = $consulta->getTodosEnf();
 $tratamentos = $consulta->getTratamentos();
+$medicos = $consulta->getTodosMed();
+$especialidades = $consulta->getTipoConsultas();
+
 $estados = $consulta->getEstados();
 
 if(isset($_GET["tipo"])) {
@@ -17,11 +20,10 @@ if(isset($_GET["tipo"])) {
     break;
     case 'consulta':
       $param = "&tipo=consulta";
-      $dados = $consulta->getConsultaMed($_GET["id"][0]);
+      $dados = $consulta->getConsultaMed($_GET["id"])[0];
     break;
   }
 }
-
 //Formatação da data e hora para colocar value nos inputs
 $data = explode(' ', $dados->data);
 $splitHora = explode(':', $data[1]);
@@ -51,7 +53,7 @@ $hora = $splitHora[0] . ":" . $splitHora[1];
       </span>
     </div>
   </div>
-
+  <?php if($_GET["tipo"] == "tratamento"): ?>
   <div class="field">
     <label class="label">Enfermeiro:</label>
     <div class="select">
@@ -75,7 +77,31 @@ $hora = $splitHora[0] . ":" . $splitHora[1];
       </div>
     </div>
   </div>
+  <?php else: ?>
+  <div class="field">
+    <label class="label">Médico:</label>
+    <div class="select">
+      <select name="enfermeiro">
+        <?php foreach($medicos as $medico): ?>
+        <option <?php if($medico->idUtilizador == $dados->idUtilizador) echo 'selected'; ?> value="<?php echo $medico->idUtilizador ?>"><?php echo $medico->nome ?></option>
+        <?php endforeach; ?>
+      </select>
+    </div>
+  </div>
 
+  <div class="field">
+    <label class="label">Especialidade:</label>
+    <div class="control">
+      <div class="select">
+        <select name="tratamento">
+          <?php foreach($especialidades as $especialidade): ?>
+          <option <?php if($especialidade->idEspecialidade == $dados->idEspecialidade) echo 'selected'; ?> value="<?php echo $especialidade->idEspecialidade ?>"><?php echo $especialidade->descricao ?></option>
+          <?php endforeach; ?>
+        </select>
+      </div>
+    </div>
+  </div>
+  <?php endif; ?>
   <div class="field">
     <label class="label">Estado:</label>
     <div class="select">
