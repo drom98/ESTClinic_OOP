@@ -81,7 +81,7 @@ $hora = $splitHora[0] . ":" . $splitHora[1];
   <div class="field">
     <label class="label">Médico:</label>
     <div class="select">
-      <select name="enfermeiro">
+      <select name="medico">
         <?php foreach($medicos as $medico): ?>
         <option <?php if($medico->idUtilizador == $dados->idUtilizador) echo 'selected'; ?> value="<?php echo $medico->idUtilizador ?>"><?php echo $medico->nome ?></option>
         <?php endforeach; ?>
@@ -93,7 +93,7 @@ $hora = $splitHora[0] . ":" . $splitHora[1];
     <label class="label">Especialidade:</label>
     <div class="control">
       <div class="select">
-        <select name="tratamento">
+        <select name="especialidade">
           <?php foreach($especialidades as $especialidade): ?>
           <option <?php if($especialidade->idEspecialidade == $dados->idEspecialidade) echo 'selected'; ?> value="<?php echo $especialidade->idEspecialidade ?>"><?php echo $especialidade->descricao ?></option>
           <?php endforeach; ?>
