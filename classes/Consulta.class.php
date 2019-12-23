@@ -8,10 +8,15 @@ class Consulta extends Basedados {
   }
 
   public function getTodasConsultEnf() {
-    $sql = "SELECT CE.idConsulta, CE.data, CE.estado, U.nome, T.descricao, UE.nome FROM Consulta_Enfermeiro CE, utilizador U, Tratamentos T, utilizador UE 
+    $sql = "SELECT CE.idConsulta, CE.data, CE.estado, U.nome utente, T.descricao, UE.nome FROM Consulta_Enfermeiro CE, utilizador U, Tratamentos T, utilizador UE 
     WHERE CE.idUtilizador = U.idUtilizador AND 
     CE.idTratamento = T.idTratamento AND
     CE.idEnfermeiro = UE.idUtilizador";
+    return $this->executarQuery($sql);
+  }
+
+  public function getTratamentos() {
+    $sql = "SELECT * FROM Tratamentos";
     return $this->executarQuery($sql);
   }
 
@@ -39,18 +44,18 @@ class Consulta extends Basedados {
   }
 
   //Botões de gestão
-  public function botaoEditar($id) {
+  public function botaoEditarEnf($id) {
     return '
-    <a href="?menu=editarUtilizador&id='.$id.'" class="button is-link is-light is-small is-fullwidth">
+    <a href="?menu=editarTratamento&id='.$id.'&tipo=tratamento" class="button is-link is-light is-small is-fullwidth">
     <span class="icon">
       <i class="fas fa-calendar-alt"></i>
     </span>
-    <span>Editar consulta</span>
+    <span>Editar tratamento</span>
     </a>
     ';
   }
 
-  public function botaoEliminar($id) {
+  public function botaoEliminarEnf($id) {
     return '
     <a href="?menu=editarUtilizador&id='.$id.'" class="button is-danger is-light is-small is-fullwidth">
     <span class="icon">
@@ -61,8 +66,35 @@ class Consulta extends Basedados {
     ';
   }
 
-  public function mostrarBotoes($id) {
-    echo $this->botaoEditar($id);
-    echo $this->botaoEliminar($id);
+  public function mostrarBotoesEnf($id) {
+    echo $this->botaoEditarEnf($id);
+    echo $this->botaoEliminarEnf($id);
+  }
+
+  public function botaoEditarMed($id) {
+    return '
+    <a href="editar-consulta.php?id='.$id.'&tipo=consulta" class="button is-link is-light is-small is-fullwidth">
+    <span class="icon">
+      <i class="fas fa-calendar-alt"></i>
+    </span>
+    <span>Editar consulta</span>
+    </a>
+    ';
+  }
+
+  public function botaoEliminarMed($id) {
+    return '
+    <a href="?menu=editarUtilizador&id='.$id.'" class="button is-danger is-light is-small is-fullwidth">
+    <span class="icon">
+      <i class="fas fa-calendar-times"></i>
+    </span>
+    <span>Eliminar consulta</span>
+    </a>
+    ';
+  }
+
+  public function mostrarBotoesMed($id) {
+    echo $this->botaoEditarMed($id);
+    echo $this->botaoEliminarMed($id);
   }
 }

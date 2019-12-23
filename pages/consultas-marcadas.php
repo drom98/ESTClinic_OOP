@@ -6,7 +6,6 @@ $consultas = new Consulta;
 $consultasEnfermeiro = $consultas->getTodasConsultEnf();
 $consultasMedico = $consultas->getTodasConsultMed();
 
-
 $tabelaVazia = new Mensagem("Tabela vazia", "link", "Não foram encontrados registos nesta tabela");
 
 setlocale(LC_TIME, 'pt_PT', 'portuguese');
@@ -30,6 +29,7 @@ date_default_timezone_set('Europe/Lisbon');
   <thead>
     <tr>
       <th>Data</abbr></th>
+      <th>Nome utente</abbr></th>
       <th>Nome enfermeiro</abbr></th>
       <th>Tratamento</abbr></th>
       <th>Opções</abbr></th>
@@ -39,9 +39,10 @@ date_default_timezone_set('Europe/Lisbon');
     <?php foreach($consultasEnfermeiro as $consulta): ?>
     <tr>
       <td><?php echo $consulta->data ?></td>
+      <td><?php echo $consulta->utente ?></td>
       <td><?php echo $consulta->nome ?></td>
       <td><?php echo $consulta->descricao ?></td>
-      <td><?php echo $consultas->mostrarBotoes($consulta->idConsulta); ?></td>
+      <td><?php echo $consultas->mostrarBotoesEnf($consulta->idConsulta); ?></td>
     </tr>
     <?php endforeach; ?>
   </tbody>
@@ -76,7 +77,7 @@ date_default_timezone_set('Europe/Lisbon');
       <td><?php echo $consulta->data ?></td>
       <td><?php echo $consulta->nome ?></td>
       <td><?php echo $consulta->descricao ?></td>
-      <td><?php echo $consultas->mostrarBotoes($consulta->idConsulta); ?></td>
+      <td><?php echo $consultas->mostrarBotoesMed($consulta->idConsulta); ?></td>
     </tr>
     <?php endforeach; ?>
   </tbody>

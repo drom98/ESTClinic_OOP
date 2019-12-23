@@ -7,10 +7,6 @@ $dados = $user->getUserById($_GET["id"])[0];
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<?php require_once 'includes/header.inc.php'; ?>
-<body>
 <form action="../backend/editar-utilizador.php?id=<?php echo $dados->idUtilizador ?>" method="POST">
     <div class="field">
       <label class="label">Nome de utilizador:</label>
@@ -76,5 +72,3 @@ $dados = $user->getUserById($_GET["id"])[0];
       </div>
     </div>
   </form>
-</body>
-</html>

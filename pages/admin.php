@@ -65,19 +65,14 @@ if(isset($_SESSION["tipoUtilizador"])) {
             case 'adicionarUtilizador':
               require_once 'registo.php';
             break;
+            case 'editarTratamento':
+              require_once 'editar-consulta.php';
+            break;
           }
         }
         ?>
       </div>
     </div>
   </section>
-
-  <hr>
-  <h1>Escolher enfermeiro</h1>
-  <select name="enfermeiros">
-  <?php foreach($enfermeiros as $enfermeiro): ?>
-    <option value="<?php echo $enfermeiro->idUtilizador ?>"><?php echo $enfermeiro->nome ?></option>
-  <?php endforeach; ?>
-  </select>
 </body>
 </html>
