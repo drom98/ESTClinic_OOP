@@ -21,17 +21,16 @@ if(isset($_GET["estado"])) {
   switch($_GET["estado"]) {
     case 'marcada':
       if($consultasEnfermeiro):
-        $nrConsultasEnf = count($consultasEnfermeiro); ?>
-        <div class="level has-background-light" style="padding: 15px; border-radius: 5px;">
-          <div class="level-left">
-            <div class="level-item">
-              <p class="subtitle is-size-5"><strong>Tratamentos enfermeiros</strong></p>
-            </div>
-          </div>
-          <div class="level-right">
-            <p class="subtitle is-size-5"><strong><?php echo $nrConsultasEnf?></strong> tratamentos marcados</p>
-          </div>
-        </div>
+        $nrConsultasEnf = count($consultasEnfermeiro); 
+        $itemsLeft = array(
+          '<p class="subtitle is-size-5"><strong>Tratamentos enfermeiros</strong></p>',
+        );
+        $itemsRight = array(
+          '<p class="subtitle is-size-5"><strong>'.$nrConsultasEnf.'</strong> tratamentos marcados</p>',
+        );
+        $infoTabela = new InfoTabela($itemsLeft, $itemsRight);
+        $infoTabela->render();
+        ?>
         <table class="table is-bordered is-striped is-hoverable is-fullwidth">
           <thead>
             <tr>
@@ -60,17 +59,17 @@ if(isset($_GET["estado"])) {
         <hr>
         
         <?php if($consultasMedico): ?>
-        <?php $nrConsultasMed = count($consultasMedico); ?>
-        <div class="level has-background-light" style="padding: 15px; border-radius: 5px;">
-          <div class="level-left">
-            <div class="level-item">
-              <p class="subtitle is-size-5"><strong>Consultas médicos</strong></p>
-            </div>
-          </div>
-          <div class="level-right">
-            <p class="subtitle is-size-5"><strong><?php echo $nrConsultasMed?></strong> consultas marcadas</p>
-          </div>
-        </div>
+        <?php 
+          $nrConsultasMed = count($consultasMedico); 
+          $itemsLeft = array(
+            '<p class="subtitle is-size-5"><strong>Consultas médicos</strong></p>',
+          );
+          $itemsRight = array(
+            '<p class="subtitle is-size-5"><strong>'.$nrConsultasMed.'</strong> consultas marcadas</p>',
+          );
+          $infoTabela = new InfoTabela($itemsLeft, $itemsRight);
+          $infoTabela->render();
+        ?>
         <table class="table is-bordered is-striped is-hoverable is-fullwidth">
           <thead>
             <tr>

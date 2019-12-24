@@ -1,36 +1,36 @@
 <?php
 
 class InfoTabela {
-  private $itemL = array();
-  private $itemR = array();
+  private $itemLeft = array();
+  private $itemRight = array();
 
-  public function __construct($itemL = null, $itemR = null)
+  public function __construct($itemLeft = null, $itemRight = null)
   {
-    $this->itemL = $itemL;
-    $this->itemR = $itemR;  
+    $this->itemLeft = $itemLeft;
+    $this->itemRight = $itemRight;  
   }
 
   public function setItemLeft($item) {
-    $this->itemL = $item;
+    $this->itemLeft = $item;
   }
 
   public function setItemRight($item) {
-    $this->itemR = $item;
+    $this->itemRight = $item;
   }
 
   public function render() {
     echo '
     <div class="level has-background-light" style="padding: 15px; border-radius: 5px;">
       <div class="level-left">';
-          foreach($this->itemL as $item) {
+          foreach($this->itemLeft as $item) {
             echo '<div class="level-item">';
             echo $item;
             echo '</div>';
           } 
       echo '</div>
       <div class="level-right">';
-        if(isset($this->itemR)):
-        foreach($this->itemR as $item) {
+        if(isset($this->itemRight)):
+        foreach($this->itemRight as $item) {
           echo '<div class="level-item">';
           echo $item;
           echo '</div>';
