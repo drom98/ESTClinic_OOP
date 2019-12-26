@@ -7,7 +7,8 @@ class InfoTabela {
   public function __construct($itemLeft = null, $itemRight = null)
   {
     $this->itemLeft = $itemLeft;
-    $this->itemRight = $itemRight;  
+    $this->itemRight = $itemRight; 
+    $this->render(); 
   }
 
   public function setItemLeft($item) {

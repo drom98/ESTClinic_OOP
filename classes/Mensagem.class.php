@@ -27,7 +27,7 @@ class Mensagem {
     return $this->tipo = $tipo;
   }
 
-  public function getMensagem()
+  public function render()
   {
     echo 
     '<article class="message is-'.$this->tipo.'">

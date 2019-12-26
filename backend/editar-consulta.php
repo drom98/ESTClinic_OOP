@@ -21,7 +21,7 @@ if(isset($_GET["id"]) && isset($_GET["tipo"])) {
     
       if($consulta->editarTratamento($idConsulta, $dados)) {
         $_SESSION["sucesso"] = "ok";
-        header("location: ../pages/admin.php?menu=gerirMarcacoes");
+        echo "<script>window.history.go(-2);</script>";
       } else {
         echo "erro";
       }
@@ -42,7 +42,7 @@ if(isset($_GET["id"]) && isset($_GET["tipo"])) {
       
       if($consulta->editarConsulta($idConsulta, $dados)) {
         $_SESSION["sucesso"] = "ok";
-        header("location: ../pages/admin.php?menu=gerirMarcacoes");
+        echo "<script>window.history.go(-2);</script>";
       } else {
         echo "erro";
       }
