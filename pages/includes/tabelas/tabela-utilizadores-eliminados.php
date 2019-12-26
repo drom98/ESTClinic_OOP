@@ -14,7 +14,6 @@ $tabelaVazia = new Mensagem("Tabela vazia", "link", "Não foram encontrados regi
     '<p class="subtitle is-size-5"><strong>'. $nrUtilizadores .'</strong> Utilizador(es) eliminado(s)</p>'
   );
   $infoTabela = new InfoTabela($itemsLeft);
-  $infoTabela->render(); 
 ?>
   <table class="table is-bordered is-striped is-hoverable is-fullwidth">
   <thead>
@@ -40,5 +39,5 @@ $tabelaVazia = new Mensagem("Tabela vazia", "link", "Não foram encontrados regi
     <?php endforeach; ?>
   </tbody>
 </table>
-    <?php else: $tabelaVazia->getMensagem(); ?>
+    <?php else: $tabelaVazia->render(); ?>
 <?php endif; ?>

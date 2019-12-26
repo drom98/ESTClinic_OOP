@@ -19,6 +19,9 @@ date_default_timezone_set('Europe/Lisbon');
 
 if(isset($_GET["estado"])) {
   switch($_GET["estado"]) {
+    case 'porAprovar':
+
+    break;
     case 'marcada':
       if($consultasEnfermeiro) {
         $nrConsultasEnf = count($consultasEnfermeiro); 
@@ -79,6 +82,7 @@ if(isset($_GET["estado"])) {
       } else {
         $tabelaVazia->render();
       }
+    break;
   }
 }
 

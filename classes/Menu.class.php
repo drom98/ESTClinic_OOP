@@ -47,6 +47,7 @@ class Menu {
     Consultas
   </p>
   <ul class="menu-list">
+    <li><a href="?menu=gerirMarcacoes&estado=porAprovar" id="gerirMarcacoes">Consultas por aprovar</a></li>
     <li><a href="?menu=gerirMarcacoes&estado=marcada" id="gerirMarcacoes">Consultas marcadas</a></li>
     <li><a href="?menu=gerirMarcacoes&estado=concluida" id="gerirMarcacoes">Consultas concluidas</a></li>
   </ul>

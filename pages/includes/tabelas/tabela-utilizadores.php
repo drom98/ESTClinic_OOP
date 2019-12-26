@@ -18,7 +18,6 @@ $tabelaVazia = new Mensagem("Tabela vazia", "link", "Não foram encontrados regi
     '<a class="button is-link is-small" href="?menu=adicionarUtilizador">Adicionar</a>',
   );
   $infoTabela = new InfoTabela($itemsLeft, $itemsRight);
-  $infoTabela->render(); 
 ?>
 <div class="table-container">
   <table class="table is-bordered is-striped is-hoverable is-fullwidth">
@@ -46,5 +45,5 @@ $tabelaVazia = new Mensagem("Tabela vazia", "link", "Não foram encontrados regi
     </tbody>
   </table>
 </div>
-<?php else: $tabelaVazia->getMensagem(); ?>
+<?php else: $tabelaVazia->render(); ?>
 <?php endif; ?>
