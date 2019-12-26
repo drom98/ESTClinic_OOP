@@ -1,12 +1,13 @@
 <?php
 
-//Instanciar objeto da classe Consulta
+//Criar objeto da classe Consulta
 $consultas = new Consulta;
-
 $consultasEnfermeiro = $consultas->getTodasConsultEnf();
 $consultasMedico = $consultas->getTodasConsultMed();
 $tratamentosConcluidas = $consultas->getTratamentosConcluidas();
 $consultasConcluidas = $consultas->getConsultasConcluidas();
+$tratamentosPorAprovar = $consulta->getTratamentosPorAprovar();
+$consultasPorAprovar = $consulta->getConsultasPorAprovar();
 
 $tabelaVazia = new Mensagem("Tabela vazia", "link", "Não foram encontrados registos nesta tabela");
 
@@ -20,7 +21,29 @@ date_default_timezone_set('Europe/Lisbon');
 if(isset($_GET["estado"])) {
   switch($_GET["estado"]) {
     case 'porAprovar':
-
+      if($tratamentosPorAprovar) {
+        $nrTratamentosPorAprovar = count($tratamentosPorAprovar);
+        $itemsLeft = array(
+          '<p class="subtitle is-size-5"><strong>'.$nrTratamentosPorAprovar.'</strong> tratamentos por aprovar</p>',
+        );
+        $infoTabela = new InfoTabela($itemsLeft);
+        tabelaTratamentosPorAprovar();
+      } else {
+        $tabelaVazia->setMensagem("Não existem tratamentos para aprovar.");
+        $tabelaVazia->render();
+      }
+      ?>
+      <hr>
+      <?php
+      if($consultasPorAprovar) {
+        $nrConsulasPorAprovar = count($consultasPorAprovar);
+        $itemsLeft = array(
+          '<p class="subtitle is-size-5"><strong>'.$nrConsulasPorAprovar.'</strong> consultas por aprovar</p>',
+        );
+      } else {
+        $tabelaVazia->setMensagem("Não existem consultas para aprovar.");
+        $tabelaVazia->render();
+      }
     break;
     case 'marcada':
       if($consultasEnfermeiro) {
@@ -84,6 +107,38 @@ if(isset($_GET["estado"])) {
       }
     break;
   }
+}
+
+function tabelaTratamentosPorAprovar() {
+  global $consultas, $tratamentosPorAprovar;
+  ?>
+  <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+    <thead>
+      <tr>
+        <th>Data</abbr></th>
+        <th>Nome utente</abbr></th>
+        <th>Nome enfermeiro</abbr></th>
+        <th>Tratamento</abbr></th>
+        <th>Opções</abbr></th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach($tratamentosPorAprovar as $consulta): ?>
+      <tr>
+        <td><?php echo $consulta->data ?></td>
+        <td><?php echo $consulta->utente ?></td>
+        <td><?php echo $consulta->nome ?></td>
+        <td><?php echo $consulta->descricao ?></td>
+        <td><?php echo $consultas->mostrarBotoesEnf($consulta->idConsulta); ?></td>
+      </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
+  <?php
+}
+
+function tabelaConsultasPorAprovar() {
+  
 }
 
 function tabelaConsultasMarcadasEnf() {

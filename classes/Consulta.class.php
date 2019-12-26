@@ -69,6 +69,22 @@ class Consulta extends Basedados {
     return $this->executarQuery($sql);
   }
 
+  public function getTratamentosPorAprovar() {
+    $sql = "SELECT CE.idConsulta, CE.data, CE.estado, U.nome utente, T.descricao, UE.nome FROM Consulta_Enfermeiro CE, utilizador U, Tratamentos T, utilizador UE 
+    WHERE CE.idUtilizador = U.idUtilizador AND 
+    CE.idTratamento = T.idTratamento AND
+    CE.idEnfermeiro = UE.idUtilizador AND estado = 1";
+    return $this->executarQuery($sql);
+  }
+
+  public function getConsultasPorAprovar() {
+    $sql = "SELECT CM.idConsulta, CM.data, CM.estado, U.nome utente, T.descricao, UM.nome FROM Consulta_Medicos CM, utilizador U, Especialidades T, utilizador UM 
+    WHERE CM.idUtilizador = U.idUtilizador AND 
+    CM.idEspecialidade = T.idEspecialidade AND
+    CM.idMedico = UM.idUtilizador AND estado = 1";
+    return $this->executarQuery($sql);
+  }
+
   //Gestão
   public function editarTratamento($id, $dados) {
     $sql = "UPDATE Consulta_Enfermeiro SET idTratamento = :idTratamento, idEnfermeiro = :idEnfermeiro, data = :data, estado = :idEstado WHERE idConsulta = '$id'";
