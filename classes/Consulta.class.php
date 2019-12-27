@@ -25,7 +25,7 @@ class Consulta extends Basedados {
     return $this->executarQuery($sql);
   }
 
-  public function getTipoConsultas() {
+  public function getEspecialidades() {
     $sql = "SELECT * FROM Especialidades";
     return $this->executarQuery($sql);
   }

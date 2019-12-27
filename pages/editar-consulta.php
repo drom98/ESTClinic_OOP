@@ -7,7 +7,7 @@ $consulta = new Consulta;
 $enfermeiros = $consulta->getTodosEnf();
 $tratamentos = $consulta->getTratamentos();
 $medicos = $consulta->getTodosMed();
-$especialidades = $consulta->getTipoConsultas();
+$especialidades = $consulta->getEspecialidades();
 
 $estados = $consulta->getEstados();
 

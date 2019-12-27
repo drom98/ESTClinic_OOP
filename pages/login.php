@@ -12,7 +12,7 @@
             <div class="card">
               <div class="card-content">
                 <?php if(isset($_SESSION["id"])): ?>
-                <?php $mensagem = new Mensagem("Já tem sessão iniciada", "link"); $mensagem->getMensagem() ?>
+                <?php $mensagem = new Mensagem("Já tem sessão iniciada", "link"); $mensagem->render() ?>
                 <?php else: ?>
                 <h1 class="title has-text-link is-4 has-text-centered">Iniciar sessão</h1>
                 <h2 class="subtitle is-6 has-text-centered">Entre com a sua conta.</h2>
