@@ -45,6 +45,9 @@ if(isset($_SESSION["tipoUtilizador"])) {
             case 'editarTratamento':
               require_once 'editar-consulta.php';
             break;
+            case 'dadosPessoais':
+              require_once 'dados-pessoais.php';
+            break;
           }
         }
         ?>

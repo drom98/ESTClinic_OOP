@@ -69,8 +69,8 @@ function tabelaConsultasMarcadas() {
       <tr>
         <th>Data</abbr></th>
         <th>Nome utente</abbr></th>
-        <th>Nome enfermeiro</abbr></th>
-        <th>Tratamento</abbr></th>
+        <th>Nome médico</abbr></th>
+        <th>Especialidade</abbr></th>
         <th>Opções</abbr></th>
       </tr>
     </thead>
@@ -81,7 +81,7 @@ function tabelaConsultasMarcadas() {
         <td><?php echo $consulta->utente ?></td>
         <td><?php echo $consulta->nome ?></td>
         <td><?php echo $consulta->descricao ?></td>
-        <td><?php echo $consultas->mostrarBotoesEnf($consulta->idConsulta); ?></td>
+        <td><?php echo $consultas->mostrarBotoesMed($consulta->idConsulta); ?></td>
       </tr>
       <?php endforeach; ?>
     </tbody>
