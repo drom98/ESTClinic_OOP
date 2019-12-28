@@ -39,6 +39,12 @@ if(isset($_SESSION["tipoUtilizador"])) {
             case 'marcarConsulta':
               require_once 'marcar-consulta.php';
             break;
+            case 'verConsultas':
+              require_once 'consultas-utilizador.php';
+            break;
+            case 'editarTratamento':
+              require_once 'editar-consulta.php';
+            break;
           }
         }
         ?>

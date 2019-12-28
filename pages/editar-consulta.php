@@ -102,6 +102,7 @@ $hora = $splitHora[0] . ":" . $splitHora[1];
     </div>
   </div>
   <?php endif; ?>
+  <?php if($_SESSION["tipoUtilizador"] == "1"): ?>
   <div class="field">
     <label class="label">Estado:</label>
     <div class="select">
@@ -112,6 +113,7 @@ $hora = $splitHora[0] . ":" . $splitHora[1];
       </select>
     </div>
   </div>
+  <?php endif; ?>
   <br>
   <div class="field is-grouped">
     <div class="control">
