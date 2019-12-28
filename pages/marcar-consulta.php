@@ -70,7 +70,7 @@ $medicos = $consulta->getTodosMed();
           <label class="label">Médico:</label>
           <div class="control">
             <div class="select">
-              <select>
+              <select name="medico">
               <?php foreach($medicos as $medico): ?>
                 <option value="<?php echo $medico->idUtilizador ?>"><?php echo $medico->nome ?></option>
               <?php endforeach; ?>

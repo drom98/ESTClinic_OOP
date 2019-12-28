@@ -30,7 +30,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
       }
     break;
     case 'consulta':
-      //
+      $idUtilizador = $_SESSION["id"];
+      $idEspecialidade = $_POST["especialidade"];
+      $idMedico = $_POST["medico"];
+      $data = $_POST["data"] . " " . $_POST["hora"] . ":00";
+      $estado = 2;
+
+      $dados = array(
+        "idUtilizador" => $idUtilizador,
+        "idEspecialidade" => $idEspecialidade,
+        "idMedico" => $idMedico,
+        "data" => $data,
+        "estado" => $estado
+      );
+      
+      if($consulta->inserirConsulta($dados)) {
+        $_SESSION["consulta"] = "marcada";
+        header("location: ../pages/utente.php?menu=verConsultas");
+      } else {
+        $_SESSION["consulta"] = "erro";
+      }
     break;
   }
 }

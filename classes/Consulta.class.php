@@ -108,7 +108,8 @@ class Consulta extends Basedados {
   }
 
   public function inserirConsulta($dados) {
-
+    $sql = "INSERT INTO Consulta_Medicos (idUtilizador, idEspecialidade, idMedico, data, estado) VALUES (:idUtilizador, :idEspecialidade, :idMedico, :data, :estado)";
+    return $this->updateQuery($sql, $dados);
   }
 
   public function editarTratamento($id, $dados) {
