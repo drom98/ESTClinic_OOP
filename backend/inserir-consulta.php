@@ -45,10 +45,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
       );
       
       if($consulta->inserirConsulta($dados)) {
-        $_SESSION["consulta"] = "marcada";
+        $_SESSION["mensagem"] = "marcada";
         header("location: ../pages/utente.php?menu=verConsultas");
       } else {
-        $_SESSION["consulta"] = "erro";
+        $_SESSION["mensagem"] = "erro";
       }
     break;
   }

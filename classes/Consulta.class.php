@@ -122,6 +122,16 @@ class Consulta extends Basedados {
     return $this->updateQuery($sql, $dados);
   }
 
+  public function eliminarTratamento($id) {
+    $sql = "UPDATE Consulta_Enfermeiro SET estado = 4 WHERE idConsulta = '$id'";
+    return $this->updateQuery($sql);
+  }
+
+  public function eliminarConsulta($id) {
+    $sql = "UPDATE Consulta_Medicos SET estado = 4 WHERE idConsulta = '$id'";
+    return $this->updateQuery($sql);
+  }
+
   //Botões de gestão
   public function botaoEditarEnf($id) {
     return '
@@ -136,7 +146,7 @@ class Consulta extends Basedados {
 
   public function botaoEliminarEnf($id) {
     return '
-    <a href="?menu=editarUtilizador&id='.$id.'" class="button is-danger is-light is-small is-fullwidth">
+    <a href="../backend/eliminar-consulta.php?id='.$id.'&tipo=tratamento" class="button is-danger is-light is-small is-fullwidth">
     <span class="icon">
       <i class="fas fa-calendar-times"></i>
     </span>
