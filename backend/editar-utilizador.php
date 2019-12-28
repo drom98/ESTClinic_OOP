@@ -1,5 +1,7 @@
 <?php 
 
+session_start();
+
 require_once '../config/init.php';
 
 if(isset($_GET["id"])) {
@@ -20,9 +22,10 @@ if(isset($_GET["id"])) {
     );
 
     if($user->editarUtilizador($_GET["id"], $dados)) {
-      $_SESSION["sucesso"] = "ok";
-      $user->redirect(1, "menu=utilizadores");
+      $_SESSION["dados-editados"] = "sucesso";
+      echo "<script>window.history.go(-1);</script>";
     } else {
+      $_SESSION["dados-editados"] = "erro";
       echo($user->erro);
     }
   }
