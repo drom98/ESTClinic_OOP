@@ -12,7 +12,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
       $idTratamento = $_POST["tratamento"];
       $idEnfermeiro = $_POST["enfermeiro"];
       $data = $_POST["data"] . " " . $_POST["hora"] . ":00";
-      $estado = 1;
+      $estado = 2;
 
       $dados = array(
         "idUtilizador" => $idUtilizador,
@@ -23,10 +23,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
       );
       
       if($consulta->inserirTratamento($dados)) {
-        $_SESSION["sucesso"] = "ok";
-        echo "<script>window.history.go(-2);</script>";
+        $_SESSION["consulta"] = "marcada";
+        header("location: ../pages/utente.php?menu=verConsultas");
       } else {
-        echo "erro";
+        $_SESSION["consulta"] = "erro";
       }
     break;
     case 'consulta':

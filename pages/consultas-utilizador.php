@@ -1,5 +1,20 @@
 <?php
 
+//Mostrar mensagem de sucesso ou erro
+if(isset($_SESSION["consulta"])) {
+  switch($_SESSION["consulta"]) {
+    case 'marcada':
+      $mensagem = new Mensagem("Consulta marcada", "success", "A sua consulta foi marcada com sucesso");
+      $mensagem->render();
+    break;
+    case 'erro':
+      $mensagem = new Mensagem("Ocorreu um erro", "danger", "Ocorreu um erro ao marcar a sua consulta");
+      $mensagem->render();
+    break;
+  }
+  unset($_SESSION["consulta"]);
+}
+
 //Criar objeto da classe Consulta
 $consultas = new Consulta;
 $consultasMarcadasUtilizador = $consultas->getConsultasMarcadasUtilizador($_SESSION["id"]);
