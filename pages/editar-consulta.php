@@ -37,7 +37,7 @@ $hora = $splitHora[0] . ":" . $splitHora[1];
   <div class="field">
     <label class="label">Data:</label>
     <div class="control has-icons-left">
-      <input name="data" type="date" class="input" value="<?php echo date("Y-m-d", strtotime($data[0])); ?>" required>
+      <input id="data-consulta" name="data" type="date" class="input" value="<?php echo date("Y-m-d", strtotime($data[0])); ?>" required>
       <span class="icon is-small is-left">
         <i class="fas fa-calendar-alt"></i>
       </span>
