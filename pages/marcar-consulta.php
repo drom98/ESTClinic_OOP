@@ -16,13 +16,13 @@ $medicos = $consulta->getTodosMed();
   </header>
   <div class="card-content">
     <div class="content">
-      <form action="">
+      <form action="../backend/inserir-consulta.php" method="POST">
         <div class="field">
           <label class="label">Tipo de consulta:</label>
           <div class="control">
-            <input class="is-checkradio is-link" id="tratamento-radio" type="radio" name="tipoConsulta" value="1">
+            <input class="is-checkradio is-link" id="tratamento-radio" type="radio" name="tipoConsulta" value="tratamento">
             <label for="tratamento-radio">Tratamento</label>
-            <input class="is-checkradio is-link" id="consulta-radio" type="radio" name="tipoConsulta" value="2">
+            <input class="is-checkradio is-link" id="consulta-radio" type="radio" name="tipoConsulta" value="consulta">
             <label for="consulta-radio">Consulta médica</label>
           </div>
         </div>
@@ -82,8 +82,8 @@ $medicos = $consulta->getTodosMed();
         <div class="field">
           <label class="label">Data:</label>
           <div class="control">
-            <input type="date">
-            <input type="time">
+            <input type="date" name="data">
+            <input type="time" name="hora">
           </div>
         </div>
 

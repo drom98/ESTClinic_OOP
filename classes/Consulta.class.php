@@ -102,6 +102,15 @@ class Consulta extends Basedados {
   }
 
   //Gestão
+  public function inserirTratamento($dados) {
+    $sql = "INSERT INTO Consulta_Enfermeiro (idUtilizador, idTratamento, idEnfermeiro, data, estado) VALUES (:idUtilizador, :idTratamento, :idEnfermeiro, :data, :estado)";
+    return $this->updateQuery($sql, $dados);
+  }
+
+  public function inserirConsulta($dados) {
+
+  }
+
   public function editarTratamento($id, $dados) {
     $sql = "UPDATE Consulta_Enfermeiro SET idTratamento = :idTratamento, idEnfermeiro = :idEnfermeiro, data = :data, estado = :idEstado WHERE idConsulta = '$id'";
     return $this->updateQuery($sql, $dados);
