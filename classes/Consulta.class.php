@@ -173,7 +173,7 @@ class Consulta extends Basedados {
 
   public function botaoEliminarMed($id) {
     return '
-    <a href="?menu=editarUtilizador&id='.$id.'" class="button is-danger is-light is-small is-fullwidth">
+    <a href="../backend/eliminar-consulta.php?id='.$id.'&tipo=consulta" class="button is-danger is-light is-small is-fullwidth">
     <span class="icon">
       <i class="fas fa-calendar-times"></i>
     </span>

@@ -1,6 +1,6 @@
 <?php
 
-//Mostrar mensagem de sucesso ou erro
+//Mostrar mensagens de feedback ao utilizador
 if(isset($_SESSION["mensagem"])) {
   switch($_SESSION["mensagem"]) {
     case 'marcada':
@@ -13,6 +13,18 @@ if(isset($_SESSION["mensagem"])) {
     break;
     case 'tratamento-eliminado':
       $mensagem = new Mensagem("Tratamento eliminado", "warning", "Tratamento eliminado com sucesso.");
+      $mensagem->render();
+    break;
+    case 'erro-tratamento-eliminado':
+      $mensagem = new Mensagem("Ocorreu um erro", "danger", "Ocorreu um erro ao eliminar o tratamento.");
+      $mensagem->render();
+    break;
+    case 'consulta-eliminada':
+      $mensagem = new Mensagem("Consulta eliminada", "warning", "Consulta eliminada com sucesso.");
+      $mensagem->render();
+    break;
+    case 'erro-consulta-eliminada':
+      $mensagem = new Mensagem("Ocorreu um erro", "danger", "Ocorreu um erro ao eliminar o tratamento.");
       $mensagem->render();
     break;
   }

@@ -17,6 +17,15 @@ if(isset($_GET["id"])) {
         echo "<script>window.history.go(-3);</script>";
       }
     break;
+    case 'consulta':
+      if($consulta->eliminarConsulta($_GET["id"])) {
+        $_SESSION["mensagem"] = "consulta-eliminada";
+        echo "<script>window.history.go(-3);</script>";
+      } else {
+        $_SESSION["mensagem"] = "erro-consulta-eliminada";
+        echo "<script>window.history.go(-3);</script>";
+      }
+    break;
   }
 
 }
