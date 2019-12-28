@@ -113,6 +113,8 @@ $hora = $splitHora[0] . ":" . $splitHora[1];
       </select>
     </div>
   </div>
+  <?php else: ?>
+  <input type="hidden" name="estado" value="<?php echo $dados->estado ?>">
   <?php endif; ?>
   <br>
   <div class="field is-grouped">

@@ -88,7 +88,7 @@ $medicos = $consulta->getTodosMed();
         </div>
 
         <div class="field">
-          <button type="submit" class="button is-link" disabled>Submeter</button>
+          <button type="submit" class="button is-link">Submeter</button>
         </div>
       </form>
     </div>
