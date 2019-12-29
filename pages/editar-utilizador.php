@@ -53,16 +53,18 @@ $dados = $user->getUserById($_GET["id"])[0];
 
     <div class="field">
       <label class="label">Tipo de utilizador:</label>
-      <input class="is-checkradio is-warning is-small" type="radio" name="tipoUtilizador" <?php echo ($dados->tipoUtilizador == "1") ? "checked" : '' ?> value="1">
-      <label for="admin-radio">Administrador</label>
-      <input class="is-checkradio is-link is-small" type="radio" name="tipoUtilizador" <?php echo ($dados->tipoUtilizador == "2") ? "checked" : '' ?> value="2">
-      <label for="medico-radio">Médico</label>
-      <input class="is-checkradio is-link is-small" type="radio" name="tipoUtilizador" <?php echo ($dados->tipoUtilizador == "3") ? "checked" : '' ?> value="3">
-      <label for="enf-radio">Enfermeiro</label>
-      <input class="is-checkradio is-link is-small" type="radio" name="tipoUtilizador" <?php echo ($dados->tipoUtilizador == "5") ? "checked" : '' ?> value="5">
-      <label for="utente-radio">Utente</label>
-      <input class="is-checkradio is-link is-small" type="radio" name="tipoUtilizador" <?php echo ($dados->tipoUtilizador == "4") ? "checked" : '' ?> value="4">
-      <label for="nv-radio">Não verificado</label>
+      <div class="control">
+        <input class="is-checkradio is-warning" type="radio" name="tipoUtilizador" <?php echo ($dados->tipoUtilizador == "1") ? "checked" : '' ?> value="1">
+        <label>Administrador</label>
+        <input class="is-checkradio is-link" type="radio" name="tipoUtilizador" <?php echo ($dados->tipoUtilizador ==   "2") ? "checked" : '' ?> value="2">
+        <label>Médico</label>
+        <input class="is-checkradio is-link" type="radio" name="tipoUtilizador" <?php echo ($dados->tipoUtilizador ==   "3") ? "checked" : '' ?> value="3">
+        <label>Enfermeiro</label>
+        <input class="is-checkradio is-link" type="radio" name="tipoUtilizador" <?php echo ($dados->tipoUtilizador ==   "5") ? "checked" : '' ?> value="5">
+        <label>Utente</label>
+        <input class="is-checkradio is-link" type="radio" name="tipoUtilizador" <?php echo ($dados->tipoUtilizador ==   "4") ? "checked" : '' ?> value="4">
+        <label>Não verificado</label>
+      </div>
     </div>
 
     <div class="field">

@@ -1,4 +1,32 @@
-<?php require_once '../config/init.php'; ?>
+<?php 
+
+require_once '../config/init.php'; 
+
+//Mostrar mensagens ao utilizador
+if(isset($_GET["erro"])) {
+  switch($_GET["erro"]) {
+    case 'password':
+      $mensagem = new Mensagem("Password errada.", "danger", "A password não coincide com o seu nome de utilizador."); 
+    break;
+    case 'nome':
+      $mensagem = new Mensagem("Nome de utilizador não existe.", "danger", "O nome de utilizador que introduziu não existe."); 
+    break;
+    case 'permissao':
+      $mensagem = new Mensagem("Não tem permissão para aceder à página.", "danger", "O seu nível de privilégios não é suficiente para aceder à página que pretende.");
+    break;
+    case 'aprovar':
+      $mensagem = new Mensagem("A sua conta aguarda aprovação.", "warning", "A sua conta foi registada com sucesso, no entando aguarda aprovação do administrador.");
+    break;
+    case 'eliminado':
+      $mensagem = new Mensagem("Conta eliminada.", "danger", "A sua conta foi eliminada pelo administrador.");
+    break;
+    case 'logout':
+      $mensagem = new Mensagem("Terminou a sessão com sucesso.", "link");
+    break;
+  }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php require_once 'includes/header.inc.php'; ?>
@@ -16,6 +44,7 @@
                 <?php else: ?>
                 <h1 class="title has-text-link is-4 has-text-centered">Iniciar sessão</h1>
                 <h2 class="subtitle is-6 has-text-centered">Entre com a sua conta.</h2>
+                <?php if(isset($mensagem)): $mensagem->render(); endif; ?>
                 <form action="../backend/login.php" method="POST">
                   <div class="field">
                     <label class="label">Nome:</label>
