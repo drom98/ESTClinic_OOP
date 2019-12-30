@@ -1,36 +1,5 @@
 <?php
 
-//Mostrar mensagens de feedback ao utilizador
-if(isset($_SESSION["mensagem"])) {
-  switch($_SESSION["mensagem"]) {
-    case 'marcada':
-      $mensagem = new Mensagem("Consulta marcada", "success", "A sua consulta foi marcada com sucesso");
-      $mensagem->render();
-    break;
-    case 'erro':
-      $mensagem = new Mensagem("Ocorreu um erro", "danger", "Ocorreu um erro ao marcar a sua consulta");
-      $mensagem->render();
-    break;
-    case 'tratamento-eliminado':
-      $mensagem = new Mensagem("Tratamento eliminado", "warning", "Tratamento eliminado com sucesso.");
-      $mensagem->render();
-    break;
-    case 'erro-tratamento-eliminado':
-      $mensagem = new Mensagem("Ocorreu um erro", "danger", "Ocorreu um erro ao eliminar o tratamento.");
-      $mensagem->render();
-    break;
-    case 'consulta-eliminada':
-      $mensagem = new Mensagem("Consulta eliminada", "warning", "Consulta eliminada com sucesso.");
-      $mensagem->render();
-    break;
-    case 'erro-consulta-eliminada':
-      $mensagem = new Mensagem("Ocorreu um erro", "danger", "Ocorreu um erro ao eliminar o tratamento.");
-      $mensagem->render();
-    break;
-  }
-  unset($_SESSION["mensagem"]);
-}
-
 //Criar objeto da classe Consulta
 $consultas = new Consulta;
 $consultasMarcadasUtilizador = $consultas->getConsultasMarcadasUtilizador($_SESSION["id"]);
@@ -119,5 +88,3 @@ function tabelaConsultasMarcadas() {
   </table>
   <?php
 }
-
-?>

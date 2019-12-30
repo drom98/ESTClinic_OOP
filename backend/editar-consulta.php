@@ -1,6 +1,7 @@
 <?php 
 
 if(isset($_GET["id"]) && isset($_GET["tipo"])) {
+  session_start();
   require_once '../config/init.php';
   $consulta = new Consulta;
   
@@ -20,10 +21,11 @@ if(isset($_GET["id"]) && isset($_GET["tipo"])) {
       );
     
       if($consulta->editarTratamento($idConsulta, $dados)) {
-        $_SESSION["sucesso"] = "ok";
+        $_SESSION["mensagem"] = "consulta-editada";
         echo "<script>window.history.go(-2);</script>";
       } else {
-        echo "erro";
+        $_SESSION["mensagem"] = "erro";
+        echo "<script>window.history.go(-2);</script>";
       }
     break;
     case 'consulta':
@@ -41,10 +43,11 @@ if(isset($_GET["id"]) && isset($_GET["tipo"])) {
       );
       
       if($consulta->editarConsulta($idConsulta, $dados)) {
-        $_SESSION["sucesso"] = "ok";
+        $_SESSION["mensagem"] = "consulta-editada";
         echo "<script>window.history.go(-2);</script>";
       } else {
-        echo "erro";
+        $_SESSION["mensagem"] = "erro";
+        echo "<script>window.history.go(-2);</script>";
       }
   }
   

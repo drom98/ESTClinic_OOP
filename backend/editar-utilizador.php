@@ -22,10 +22,10 @@ if(isset($_GET["id"])) {
     );
 
     if($user->editarUtilizador($_GET["id"], $dados)) {
-      $_SESSION["dados-editados"] = "sucesso";
+      $_SESSION["mensagem"] = "utilizador-editado";
       echo "<script>window.history.go(-1);</script>";
     } else {
-      $_SESSION["dados-editados"] = "erro";
+      $_SESSION["mensagem"] = "erro";
       echo($user->erro);
     }
   }

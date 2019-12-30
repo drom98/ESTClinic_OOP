@@ -6,7 +6,7 @@ require_once '../config/init.php';
 if(isset($_GET["erro"])) {
   switch($_GET["erro"]) {
     case 'password':
-      $mensagem = new Mensagem("Password errada.", "danger", "A password não coincide com o seu nome de utilizador."); 
+      $mensagem = new Mensagem("Password errada.", "danger", "A password não coincide com o seu nome de utilizador.");
     break;
     case 'nome':
       $mensagem = new Mensagem("Nome de utilizador não existe.", "danger", "O nome de utilizador que introduziu não existe."); 

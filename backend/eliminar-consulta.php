@@ -11,19 +11,19 @@ if(isset($_GET["id"])) {
     case 'tratamento':
       if($consulta->eliminarTratamento($_GET["id"])) {
         $_SESSION["mensagem"] = "tratamento-eliminado";
-        echo "<script>window.history.go(-3);</script>";
+        echo "<script>window.history.go(-1);</script>";
       } else {
-        $_SESSION["mensagem"] = "erro-tratamento-eliminado";
-        echo "<script>window.history.go(-3);</script>";
+        $_SESSION["mensagem"] = "erro";
+        echo "<script>window.history.go(-1);</script>";
       }
     break;
     case 'consulta':
       if($consulta->eliminarConsulta($_GET["id"])) {
         $_SESSION["mensagem"] = "consulta-eliminada";
-        echo "<script>window.history.go(-3);</script>";
+        echo "<script>window.history.go(-1);</script>";
       } else {
-        $_SESSION["mensagem"] = "erro-consulta-eliminada";
-        echo "<script>window.history.go(-3);</script>";
+        $_SESSION["mensagem"] = "erro";
+        echo "<script>window.history.go(-1);</script>";
       }
     break;
   }

@@ -16,6 +16,31 @@ if(isset($_SESSION["tipoUtilizador"])) {
   $user->redirect("permissao");
 }
 
+//Mostrar mensagens de feedback ao utilizador
+if(isset($_SESSION["mensagem"])) {
+  switch($_SESSION["mensagem"]) {
+    case 'utilizador-editado':
+      $mensagem = new Mensagem("Dados alterados", "success", "Os seus dados foram alterados com sucesso");
+    break;
+    case 'marcada':
+      $mensagem = new Mensagem("Consulta marcada", "success", "A sua consulta foi marcada com sucesso");
+    break;
+    case 'consulta-editada':
+      $mensagem = new Mensagem("Marcação editada", "success", "A sua marcação foi editada com sucesso");
+    break;
+    case 'tratamento-eliminado':
+      $mensagem = new Mensagem("Tratamento eliminado", "warning", "Tratamento eliminado com sucesso.");
+    break;
+    case 'consulta-eliminada':
+      $mensagem = new Mensagem("Consulta eliminada", "warning", "Consulta eliminada com sucesso.");
+    break;
+    case 'erro':
+      $mensagem = new Mensagem("Ocorreu um erro", "danger", "Ocorreu um erro ao efetuar a ação pretendida");
+    break;
+  }
+  unset($_SESSION["mensagem"]);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -34,6 +59,11 @@ if(isset($_SESSION["tipoUtilizador"])) {
       </div>
       <div class="column">
         <?php
+        //Mostrar a mensagem ao utilizador
+        if(isset($mensagem)):
+          $mensagem->render();
+        endif;
+
         if(isset($_GET["menu"])) {
           switch($_GET["menu"]) {
             case 'marcarConsulta':
