@@ -107,6 +107,9 @@ if(isset($_SESSION["mensagem"])) {
             case 'editarTratamento':
               require_once 'editar-consulta.php';
             break;
+            case 'escalaServico':
+              require_once 'escala-servico.php';
+            break;
           }
         }
         ?>

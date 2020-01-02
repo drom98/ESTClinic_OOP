@@ -43,6 +43,22 @@ class Consulta extends Basedados {
     return $this->executarQuery($sql);
   }
 
+  public function getEscalaMed($id) {
+    $sql = "SELECT CM.idConsulta, CM.data, CM.estado, U.nome utente, T.descricao, UM.nome FROM Consulta_Medicos CM, utilizador U, Especialidades T, utilizador UM 
+    WHERE CM.idUtilizador = U.idUtilizador AND 
+    CM.idEspecialidade = T.idEspecialidade AND
+    CM.idMedico = UM.idUtilizador AND estado = 2 AND CM.idMedico = '$id'";
+    return $this->executarQuery($sql);
+  }
+
+  public function getEscalaEnf($id) {
+    $sql = "SELECT CE.idConsulta, CE.data, CE.estado, U.nome utente, T.descricao, UE.nome FROM Consulta_Enfermeiro CE, utilizador U, Tratamentos T, utilizador UE 
+    WHERE CE.idUtilizador = U.idUtilizador AND 
+    CE.idTratamento = T.idTratamento AND
+    CE.idEnfermeiro = UE.idUtilizador AND estado = 2 AND CE.idEnfermeiro = '$id'";
+    return $this->executarQuery($sql);
+  }
+
   public function getTodosEnf() {
     $sql = "SELECT * FROM utilizador WHERE tipoUtilizador = '3'";
     return $this->executarQuery($sql);

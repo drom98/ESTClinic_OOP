@@ -62,8 +62,8 @@ class Menu {
     <li><a>Gerir escalas de serviço</a></li>
     <li>
         <ul>
-          <li><a href="">Médicos</a></li>
-          <li><a href="">Enfermeiros</a></li>
+          <li><a href="?menu=escalaServico&tipo=medico">Médicos</a></li>
+          <li><a href="?menu=escalaServico&tipo=enfermeiro">Enfermeiros</a></li>
         </ul>
       </li>
   </ul>
