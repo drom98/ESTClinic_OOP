@@ -14,8 +14,8 @@
               <h2 class="subtitle is-5">
                   Entre com a sua conta ou registe-se para fazer a sua marcação.
               </h2>
-              <a class="button is-link" href=<?php echo('login.php'); ?>>Iniciar sessão</a>
-              <a class="button is-outlined is-link" href="#" style="margin-left: 1rem;">Mais informações</a>
+              <a class="button is-link" href="login.php">Iniciar sessão</a>
+              <a class="button is-outlined is-link" href="#info-section" style="margin-left: 1rem;">Mais informações</a>
             </div>
             <div class="column is-half is-desktop is-vcentered">
               <figure class="image">
@@ -165,7 +165,7 @@
         <div class="columns is-gapless is-vcentered">
           <div class="column is-2 has-text-centered">
             <figure class="image has-text-link">
-              <i class="fas fa-phone-alt fa-3x"></i>
+              <i class="fas fa-phone fa-3x"></i>
             </figure>
           </div>
           <div class="column">

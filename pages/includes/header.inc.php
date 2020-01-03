@@ -5,5 +5,6 @@
   <link rel="stylesheet" href="../assets/css/bulma.min.css">
   <link rel="stylesheet" href="../assets/css/bulma-checkradio.min.css">
   <script src="../assets/javascript/font_awesome.js"></script>
+  <script src="../assets/javascript/main.js"></script>
   <title>ESTClinic</title>
 </head>

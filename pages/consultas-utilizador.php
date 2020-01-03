@@ -5,10 +5,6 @@ $consultas = new Consulta;
 $consultasMarcadasUtilizador = $consultas->getConsultasMarcadasUtilizador($_SESSION["id"]);
 $tratamentosMarcadosUtilizador = $consultas->getTratamentosMarcadosUtilizador($_SESSION["id"]);
 
-?>
-
-<?php 
-
 if($tratamentosMarcadosUtilizador) {
   $nr = count($tratamentosMarcadosUtilizador);
   $itemsLeft = array(

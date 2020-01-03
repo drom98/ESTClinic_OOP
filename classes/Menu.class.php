@@ -47,9 +47,9 @@ class Menu {
     Consultas
   </p>
   <ul class="menu-list">
-    <li><a href="?menu=gerirMarcacoes&estado=porAprovar" id="gerirMarcacoes">Consultas por aprovar</a></li>
-    <li><a href="?menu=gerirMarcacoes&estado=marcada" id="gerirMarcacoes">Consultas marcadas</a></li>
-    <li><a href="?menu=gerirMarcacoes&estado=concluida" id="gerirMarcacoes">Consultas concluidas</a></li>
+    <li><a href="?menu=gerirMarcacoes&estado=marcada" id="marcada">Consultas marcadas</a></li>
+    <li><a href="?menu=gerirMarcacoes&estado=porAprovar" id="porAprovar">Consultas por aprovar</a></li>
+    <li><a href="?menu=gerirMarcacoes&estado=concluida" id="concluida">Consultas concluidas</a></li>
   </ul>
   
   <p class="menu-label">
@@ -59,13 +59,8 @@ class Menu {
     Escalas de serviço
   </p>
   <ul class="menu-list">
-    <li><a>Gerir escalas de serviço</a></li>
-    <li>
-        <ul>
-          <li><a href="?menu=escalaServico&tipo=medico">Médicos</a></li>
-          <li><a href="?menu=escalaServico&tipo=enfermeiro">Enfermeiros</a></li>
-        </ul>
-      </li>
+    <li><a href="?menu=escalaServico&tipo=medico" id="medico">Médicos</a></li>
+    <li><a href="?menu=escalaServico&tipo=enfermeiro" id="enfermeiro">Enfermeiros</a></li>
   </ul>
   
   <p class="menu-label">
@@ -97,7 +92,7 @@ class Menu {
     </p>
     <ul class="menu-list">
       <li><a href="?menu=marcarConsulta" id="marcarConsulta">Marcar consulta</a></li>
-      <li><a href="?menu=verConsultas" id="utilizadores">Ver consultas marcadas</a></li>
+      <li><a href="?menu=verConsultas" id="verConsultas">Ver consultas marcadas</a></li>
     </ul>
   
     <p class="menu-label">
