@@ -66,14 +66,8 @@ if(isset($_SESSION["mensagem"])) {
 
         if(isset($_GET["menu"])) {
           switch($_GET["menu"]) {
-            case 'marcarConsulta':
-              require_once 'marcar-consulta.php';
-            break;
-            case 'verConsultas':
-              require_once 'consultas-utilizador.php';
-            break;
-            case 'editarTratamento':
-              require_once 'editar-consulta.php';
+            case 'escalaServico':
+              require_once 'escala-servico.php';
             break;
             case 'dadosPessoais':
               require_once 'dados-pessoais.php';
