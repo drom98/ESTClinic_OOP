@@ -96,7 +96,7 @@ if(isset($_SESSION["mensagem"])) {
               require_once 'dados-pessoais.php';
             break;
             case 'gerirMarcacoes':
-              require_once 'consultas-admin.php';
+              require_once 'consultas.php';
             break;
             case 'editarUtilizador':
               require_once 'editar-utilizador.php';

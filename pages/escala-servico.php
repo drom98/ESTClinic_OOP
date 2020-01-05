@@ -3,11 +3,6 @@
 //Instanciar objeto da classe Consulta
 $consulta = new Consulta;
 
-//Mostrar select list case seja admin
-if($_SESSION["tipoUtilizador"] == "1"): ?>
-
-<?php endif;
-
 switch($_SESSION["tipoUtilizador"]) {
   //Admin
   case '1':
@@ -32,15 +27,20 @@ switch($_SESSION["tipoUtilizador"]) {
       } else {
         $mensagem = new Mensagem("O médico que selecionou não tem consultas marcadas.", "link");
       }
+      //Limpar variavel
       unset($_SESSION["consultas"]);
     } else {
       $mensagem = new Mensagem("Não tem nenhum médico selecionado.", "warning");
     }
   break;
-  //Medico ou Enfermeiro
+  //Medico
   case '2':
-  case '3':
     $consultas = $consulta->getEscalaMed($_SESSION["id"]);
+    tabela($consultas);
+  break;
+  //Enfermeiro
+  case '3':
+    $consultas = $consulta->getEscalaEnf($_SESSION["id"]);
     tabela($consultas);
   break;
 }

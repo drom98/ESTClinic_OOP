@@ -66,6 +66,8 @@ if(isset($_SESSION["mensagem"])) {
 
         if(isset($_GET["menu"])) {
           switch($_GET["menu"]) {
+            case 'gerirMarcacoes':
+              require_once 'consultas.php';
             case 'escalaServico':
               require_once 'escala-servico.php';
             break;

@@ -16,7 +16,6 @@ $dados = $user->getUserById($_GET["id"])[0];
           <i class="fas fa-user"></i>
         </span>
       </div>
-      <p id="userName" class="help is-danger is-hidden">O nome que introduziu já existe.</p>
     </div>
 
     <div class="field">
@@ -48,7 +47,6 @@ $dados = $user->getUserById($_GET["id"])[0];
             <i class="fas fa-lock"></i>
           </span>
         </div>
-        <p id="password" class="help is-danger is-hidden">Password errada.</p>
     </div>
 
     <div class="field">
