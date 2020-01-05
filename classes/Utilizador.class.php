@@ -42,6 +42,11 @@ class Utilizador extends Basedados {
     }
   }
 
+  public function getTiposUtilizador() {
+    $sql = "SELECT * FROM tipoUtilizador";
+    return $this->executarQuery($sql);
+  }
+
   //CRUD
   //Inserir utilizador
   public function inserirUtilizador($dados) {
@@ -116,7 +121,7 @@ class Utilizador extends Basedados {
         header("Location: ../pages/medico.php");
       break;
       case '3':
-        header("Location: ../pages/enfermeiro.php");
+        header("Location: ../pages/medico.php");
       break;
       case '4':
         header("Location: ../pages/login.php?erro=aprovar");

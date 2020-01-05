@@ -21,7 +21,6 @@
                           <i class="fas fa-user"></i>
                         </span>
                       </div>
-                      <p id="userName" class="help is-danger is-hidden">O nome que introduziu já existe.</p>
 
                     <div class="field">
                       <label class="label">Nome:</label>
@@ -49,9 +48,10 @@
                             <i class="fas fa-lock"></i>
                           </span>
                         </div>
-                        <p id="password" class="help is-danger is-hidden">Password errada.</p>
                     </div>
                     
+                    <input type="hidden" name="tipoUtilizador" value="4">
+
                     <div class="field">
                       <div class="control">
                         <input type="submit" class="button is-link is-fullwidth" value="Registar">

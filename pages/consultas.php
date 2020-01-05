@@ -193,7 +193,7 @@ function tabelaTratamentos($dados) {
           if($_SESSION["tipoUtilizador"] == "2" || $_SESSION["tipoUtilizador"] == "3"):
             echo $consultas->botaoConcluirConsulta($consulta->idConsulta, "tratamento");
           else:
-            echo $consultas->mostrarBotoesMed($consulta->idConsulta); 
+            echo $consultas->mostrarBotoesEnf($consulta->idConsulta); 
           endif; 
         ?></td>
       </tr>

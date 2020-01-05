@@ -27,6 +27,9 @@ if(isset($_SESSION["tipoUtilizador"])) {
 //Mostrar mensagens de feedback ao utilizador
 if(isset($_SESSION["mensagem"])) {
   switch($_SESSION["mensagem"]) {
+    case 'utilizador-adicionado':
+      $mensagem = new Mensagem("Utilizador adicionado", "success", "O utilizador foi adicionado com sucesso");
+    break;
     case 'utilizador-editado':
       $mensagem = new Mensagem("Utilizador editado", "success", "Os dados do utilizador foram alterado com sucesso");
     break;
@@ -102,7 +105,7 @@ if(isset($_SESSION["mensagem"])) {
               require_once 'editar-utilizador.php';
             break;
             case 'adicionarUtilizador':
-              require_once 'registo.php';
+              require_once 'inserir-utilizador.php';
             break;
             case 'editarTratamento':
               require_once 'editar-consulta.php';
