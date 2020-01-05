@@ -3,6 +3,9 @@
 //Instanciar objeto da classe Consulta
 $consulta = new Consulta;
 
+//Mensagem de tabela sem dados
+$tabelaVazia = new Mensagem("Tabela vazia", "link", "Não foram encontrados registos nesta tabela");
+
 switch($_SESSION["tipoUtilizador"]) {
   //Admin
   case '1':
@@ -36,12 +39,30 @@ switch($_SESSION["tipoUtilizador"]) {
   //Medico
   case '2':
     $consultas = $consulta->getEscalaMed($_SESSION["id"]);
-    tabela($consultas);
+    if(obterNumero($consultas)) {
+      $itemsLeft = array(
+        '<p class="subtitle is-size-5"><strong>'.obterNumero($consultas).'</strong> consulta(s) marcada(s)</p>',
+      );
+      $infoTabela = new InfoTabela($itemsLeft);
+      tabela($consultas);
+    } else {
+      //Mostrar mensagem de tabela sem dados
+      $tabelaVazia->render();
+    }
   break;
   //Enfermeiro
   case '3':
     $consultas = $consulta->getEscalaEnf($_SESSION["id"]);
-    tabela($consultas);
+    if(obterNumero($consultas)) {
+      $itemsLeft = array(
+        '<p class="subtitle is-size-5"><strong>'.obterNumero($consultas).'</strong> tratamento(s) marcado(s)</p>',
+      );
+      $infoTabela = new InfoTabela($itemsLeft);
+      tabela($consultas);
+    } else {
+      //Mostrar mensagem de tabela sem dados
+      $tabelaVazia->render();
+    }
   break;
 }
 
@@ -84,6 +105,14 @@ function tabela($dados) {
   </tbody>
 </table>
 <?php
+}
+
+function obterNumero($tabela) {
+  if($tabela) {
+    return count($tabela);
+  } else {
+    return false;
+  }
 }
 
 if(isset($mensagem)) {

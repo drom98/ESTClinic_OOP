@@ -31,7 +31,7 @@ switch($_SESSION["tipoUtilizador"]) {
         if(obterNumero($consultasMedico)) {
           //Mostrar informações da tabela
           $itemsLeft = array(
-            '<p class="subtitle is-size-5"><strong>'.obterNumero($consultasMedico).'</strong> consulta(s) por aprovar</p>',
+            '<p class="subtitle is-size-5"><strong>'.obterNumero($consultasMedico).'</strong> consulta(s) marcada(s)</p>',
           );
           $infoTabela = new InfoTabela($itemsLeft);
           //Mostrar tabela
@@ -44,7 +44,7 @@ switch($_SESSION["tipoUtilizador"]) {
         //## Tabela tratamentos enfermeiro ##
         if(obterNumero($consultasEnfermeiro)) {
           $itemsLeft = array(
-            '<p class="subtitle is-size-5"><strong>'.obterNumero($consultasEnfermeiro).'</strong> tratamento(s) por aprovar</p>',
+            '<p class="subtitle is-size-5"><strong>'.obterNumero($consultasEnfermeiro).'</strong> tratamento(s) marcado(s)</p>',
           );
           $infoTabela = new InfoTabela($itemsLeft);
           tabelaTratamentos($consultasEnfermeiro);
@@ -78,7 +78,7 @@ switch($_SESSION["tipoUtilizador"]) {
       case 'concluida':
         if(obterNumero($consultasConcluidas)) {
           $itemsLeft = array(
-            '<p class="subtitle is-size-5"><strong>'.obterNumero($consultasConcluidas).'</strong> consulta(s) por aprovar</p>',
+            '<p class="subtitle is-size-5"><strong>'.obterNumero($consultasConcluidas).'</strong> consulta(s) concluida(s)</p>',
           );
           $infoTabela = new InfoTabela($itemsLeft);
           tabelaConsultas($consultasConcluidas);

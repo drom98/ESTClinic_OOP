@@ -110,7 +110,38 @@ class Menu {
   }
 
   public function menuEnfermeiro() {
-    //
+    echo '
+    <p class="menu-label">
+    <span class="icon">
+      <i class="fas fa-calendar-check fa-lg has-text-link"></i>
+    </span>
+      Tratamentos
+    </p>
+    <ul class="menu-list">
+      <li><a href="?menu=gerirMarcacoes&estado=marcada" id="marcada">Tratamentos marcados</a></li>
+      <li><a href="?menu=gerirMarcacoes&estado=concluida" id="concluida">Tratamentos concluidos</a></li>
+    </ul>
+
+    <p class="menu-label">
+      <span class="icon">
+        <i class="fas fa-user-md fa-lg has-text-link"></i>
+      </span>
+      Escala de serviço
+    </p>
+    <ul class="menu-list">
+      <li><a href="?menu=escalaServico&tipo=medico" id="medico">Visualizar escala</a></li>
+    </ul>
+
+    <p class="menu-label">
+      <span class="icon">
+        <i class="fas fa-user-circle fa-lg has-text-link"></i>
+      </span>
+      Dados pessoais
+    </p>
+    <ul class="menu-list">
+      <li><a href="?menu=dadosPessoais" id="dadosPessoais">Gerir dados pessoais</a></li>
+    </ul>
+    ';
   }
 
   public function menuUtente() {

@@ -9,7 +9,7 @@ $user = new Utilizador;
 
 //Proteger página
 if(isset($_SESSION["tipoUtilizador"])) {
-  if($_SESSION["tipoUtilizador"] != "2") {
+  if($_SESSION["tipoUtilizador"] != "2" && $_SESSION["tipoUtilizador"] != "3") {
     $user->redirect("permissao");  
   }
 } else {
@@ -50,6 +50,9 @@ if(isset($_SESSION["mensagem"])) {
 <body class="has-navbar-fixed-top">
   <?php 
   $hero = new Hero("Bem vindo, " . $_SESSION["nome"], "Página de médico", "link");
+  if($_SESSION["tipoUtilizador"] == "3") {
+    $hero->setSubtitle("Página de enfermeiro");
+  }
   $hero->printHero();
   ?>
   <section class="section">
