@@ -133,6 +133,22 @@ class Consulta extends Basedados {
     return $this->executarQuery($sql);
   }
 
+  public function getConsultasConcluidasMed($id) {
+    $sql = "SELECT CM.idConsulta, CM.idMedico, CM.data, CM.estado, U.nome utente, T.descricao, UM.nome FROM Consulta_Medicos CM, utilizador U, Especialidades T, utilizador UM 
+    WHERE CM.idUtilizador = U.idUtilizador AND 
+    CM.idEspecialidade = T.idEspecialidade AND
+    CM.idMedico = UM.idUtilizador AND estado = 3 AND CM.idMedico = $id";
+    return $this->executarQuery($sql);
+  }
+
+  public function getTratamentosConcluidosEnf($id) {
+    $sql = "SELECT CE.idConsulta, CE.idEnfermeiro, CE.data, CE.estado, U.nome utente, T.descricao, UE.nome FROM Consulta_Enfermeiro CE, utilizador U, Tratamentos T, utilizador UE 
+    WHERE CE.idUtilizador = U.idUtilizador AND 
+    CE.idTratamento = T.idTratamento AND
+    CE.idEnfermeiro = UE.idUtilizador AND estado = 3 AND CE.idEnfermeiro = $id";
+    return $this->executarQuery($sql);
+  }
+
   //Gestão
   public function inserirTratamento($dados) {
     $sql = "INSERT INTO Consulta_Enfermeiro (idUtilizador, idTratamento, idEnfermeiro, data, estado) VALUES (:idUtilizador, :idTratamento, :idEnfermeiro, :data, :estado)";
@@ -161,6 +177,16 @@ class Consulta extends Basedados {
 
   public function eliminarConsulta($id) {
     $sql = "UPDATE Consulta_Medicos SET estado = 4 WHERE idConsulta = '$id'";
+    return $this->updateQuery($sql);
+  }
+
+  public function concluirTratamento($id) {
+    $sql = "UPDATE Consulta_Enfermeiro SET estado = 3 WHERE idConsulta = '$id'";
+    return $this->updateQuery($sql);
+  }
+
+  public function concluirConsulta($id) {
+    $sql = "UPDATE Consulta_Medicos SET estado = 3 WHERE idConsulta = '$id'";
     return $this->updateQuery($sql);
   }
 
@@ -210,6 +236,17 @@ class Consulta extends Basedados {
       <i class="fas fa-calendar-times"></i>
     </span>
     <span>Eliminar consulta</span>
+    </a>
+    ';
+  }
+
+  public function botaoConcluirConsulta($id, $tipo) {
+    return '
+    <a href="../backend/concluir-consulta.php?id='.$id.'&tipo='.$tipo.'" class="button is-success is-light is-small is-fullwidth">
+    <span class="icon">
+      <i class="fas fa-calendar-alt"></i>
+    </span>
+    <span>Concluir consulta</span>
     </a>
     ';
   }

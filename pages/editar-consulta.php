@@ -8,7 +8,6 @@ $enfermeiros = $consulta->getTodosEnf();
 $tratamentos = $consulta->getTratamentos();
 $medicos = $consulta->getTodosMed();
 $especialidades = $consulta->getEspecialidades();
-
 $estados = $consulta->getEstados();
 
 if(isset($_GET["tipo"])) {

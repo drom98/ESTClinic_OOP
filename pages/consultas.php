@@ -10,10 +10,10 @@ $tratamentosPorAprovar = $consultas->getTratamentosPorAprovar();
 $consultasPorAprovar = $consultas->getConsultasPorAprovar();
 //Consultas medico
 $escalaMedico = $consultas->getEscalaMed($_SESSION["id"]);
-$consultasConcluidasMed = $consultas->getConsultasConcluidasUtilizador($_SESSION["id"]);
+$consultasConcluidasMed = $consultas->getConsultasConcluidasMed($_SESSION["id"]);
 //Consultas enfermeiro
 $escalaEnfermeiro = $consultas->getEscalaEnf($_SESSION["id"]);
-$consultasConcluidasEnf = $consultas->getTratamentosConcluidosUtilizador($_SESSION["id"]);
+$consultasConcluidasEnf = $consultas->getTratamentosConcluidosEnf($_SESSION["id"]);
 
 $mensagem = new Mensagem("Tabela vazia", "link", "Não foram encontrados registos nesta tabela");
 
@@ -138,7 +138,7 @@ switch($_SESSION["tipoUtilizador"]) {
             '<p class="subtitle is-size-5"><strong>'.obterNumero($escalaEnfermeiro).'</strong> consulta(s) marcada(s)</p>',
           );
           $infoTabela = new InfoTabela($itemsLeft);
-          tabelaConsultas($escalaEnfermeiro);
+          tabelaTratamentos($escalaEnfermeiro);
         } else {
           //Mostrar mensagem de tabela sem dados
           $mensagem->render();
@@ -150,7 +150,7 @@ switch($_SESSION["tipoUtilizador"]) {
             '<p class="subtitle is-size-5"><strong>'.obterNumero($consultasConcluidasEnf).'</strong> consulta(s) marcada(s)</p>',
           );
           $infoTabela = new InfoTabela($itemsLeft);
-          tabelaConsultas($consultasConcluidasEnf);
+          tabelaTratamentos($consultasConcluidasEnf);
         } else {
           //Mostrar mensagem de tabela sem dados
           $mensagem->render();
@@ -188,7 +188,14 @@ function tabelaTratamentos($dados) {
         <td><?php echo $consulta->utente ?></td>
         <td><?php echo $consulta->nome ?></td>
         <td><?php echo $consulta->descricao ?></td>
-        <td><?php echo $consultas->mostrarBotoesEnf($consulta->idConsulta); ?></td>
+        <td><?php 
+          //Mudar botões da tabela consoante tipo de utilizador
+          if($_SESSION["tipoUtilizador"] == "2" || $_SESSION["tipoUtilizador"] == "3"):
+            echo $consultas->botaoConcluirConsulta($consulta->idConsulta, "tratamento");
+          else:
+            echo $consultas->mostrarBotoesMed($consulta->idConsulta); 
+          endif; 
+        ?></td>
       </tr>
       <?php endforeach; ?>
     </tbody>
@@ -216,7 +223,14 @@ function tabelaConsultas($dados) {
         <td><?php echo $consulta->utente ?></td>
         <td><?php echo $consulta->nome ?></td>
         <td><?php echo $consulta->descricao ?></td>
-        <td><?php echo $consultas->mostrarBotoesMed($consulta->idConsulta); ?></td>
+        <td><?php 
+          //Mudar botões da tabela consoante tipo de utilizador
+          if($_SESSION["tipoUtilizador"] == "2" || $_SESSION["tipoUtilizador"] == "3"):
+            echo $consultas->botaoConcluirConsulta($consulta->idConsulta, "consulta");
+          else:
+            echo $consultas->mostrarBotoesMed($consulta->idConsulta); 
+          endif;
+          ?></td>
       </tr>
       <?php endforeach; ?>
     </tbody>

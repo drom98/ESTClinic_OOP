@@ -28,6 +28,9 @@ if(isset($_SESSION["mensagem"])) {
     case 'consulta-editada':
       $mensagem = new Mensagem("Marcação editada", "success", "A sua marcação foi editada com sucesso");
     break;
+    case 'consulta-concluida':
+      $mensagem = new Mensagem("Marcação concluida", "success", "A sua marcação foi marcada como concluida");
+    break;
     case 'tratamento-eliminado':
       $mensagem = new Mensagem("Tratamento eliminado", "warning", "Tratamento eliminado com sucesso.");
     break;
@@ -74,6 +77,9 @@ if(isset($_SESSION["mensagem"])) {
             break;
             case 'escalaServico':
               require_once 'escala-servico.php';
+            break;
+            case 'editarTratamento':
+              require_once 'editar-consulta.php';
             break;
             case 'dadosPessoais':
               require_once 'dados-pessoais.php';
