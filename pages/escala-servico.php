@@ -61,7 +61,7 @@ function selectList($lista) {
 <?php
 }
 
-function tabela($consultas) {
+function tabela($dados) {
   ?>
   <table class="table is-bordered is-striped is-hoverable is-fullwidth">
   <thead>
@@ -73,7 +73,7 @@ function tabela($consultas) {
     </tr>
   </thead>
   <tbody>
-    <?php foreach($consultas as $consulta): ?>
+    <?php foreach($dados as $consulta): ?>
     <tr>
       <td><?php echo $consulta->data ?></td>
       <td><?php echo $consulta->utente ?></td>

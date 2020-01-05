@@ -8,6 +8,12 @@ $tratamentosConcluidas = $consultas->getTratamentosConcluidas();
 $consultasConcluidas = $consultas->getConsultasConcluidas();
 $tratamentosPorAprovar = $consultas->getTratamentosPorAprovar();
 $consultasPorAprovar = $consultas->getConsultasPorAprovar();
+//Consultas medico
+$escalaMedico = $consultas->getEscalaMed($_SESSION["id"]);
+$consultasConcluidasMed = $consultas->getConsultasConcluidasUtilizador($_SESSION["id"]);
+//Consultas enfermeiro
+$escalaEnfermeiro = $consultas->getEscalaEnf($_SESSION["id"]);
+$consultasConcluidasEnf = $consultas->getTratamentosConcluidosUtilizador($_SESSION["id"]);
 
 $mensagem = new Mensagem("Tabela vazia", "link", "Não foram encontrados registos nesta tabela");
 
@@ -84,7 +90,7 @@ switch($_SESSION["tipoUtilizador"]) {
         //## Tabela tratamentos enfermeiro ##
         if(obterNumero($tratamentosConcluidas)) {
           $itemsLeft = array(
-            '<p class="subtitle is-size-5"><strong>'.obterNumero($tratamentosConcluidas).'</strong> tratamento(s) por aprovar</p>',
+            '<p class="subtitle is-size-5"><strong>'.obterNumero($tratamentosConcluidas).'</strong> tratamento(s) concluido(s)</p>',
           );
           $infoTabela = new InfoTabela($itemsLeft);
           tabelaTratamentos($tratamentosConcluidas);
@@ -96,11 +102,61 @@ switch($_SESSION["tipoUtilizador"]) {
   break;
   //Médico
   case '2':
-
+    switch($_GET["estado"]) {
+      case 'marcada':
+        if(obterNumero($escalaMedico)) {
+          $itemsLeft = array(
+            '<p class="subtitle is-size-5"><strong>'.obterNumero($escalaMedico).'</strong> consulta(s) marcada(s)</p>',
+          );
+          $infoTabela = new InfoTabela($itemsLeft);
+          tabelaConsultas($escalaMedico);
+        } else {
+          //Mostrar mensagem de tabela sem dados
+          $mensagem->render();
+        }
+      break;
+      case 'concluida':
+        if(obterNumero($consultasConcluidasMed)) {
+          $itemsLeft = array(
+            '<p class="subtitle is-size-5"><strong>'.obterNumero($consultasConcluidasMed).'</strong> consulta(s) marcada(s)</p>',
+          );
+          $infoTabela = new InfoTabela($itemsLeft);
+          tabelaConsultas($consultasConcluidasMed);
+        } else {
+          //Mostrar mensagem de tabela sem dados
+          $mensagem->render();
+        }
+      break;
+    }
   break;
   //Enfermeiro
   case '3':
-
+    switch($_GET["estado"]) {
+      case 'marcada':
+        if(obterNumero($escalaEnfermeiro)) {
+          $itemsLeft = array(
+            '<p class="subtitle is-size-5"><strong>'.obterNumero($escalaEnfermeiro).'</strong> consulta(s) marcada(s)</p>',
+          );
+          $infoTabela = new InfoTabela($itemsLeft);
+          tabelaConsultas($escalaEnfermeiro);
+        } else {
+          //Mostrar mensagem de tabela sem dados
+          $mensagem->render();
+        }
+      break;
+      case 'concluida':
+        if(obterNumero($consultasConcluidasEnf)) {
+          $itemsLeft = array(
+            '<p class="subtitle is-size-5"><strong>'.obterNumero($consultasConcluidasEnf).'</strong> consulta(s) marcada(s)</p>',
+          );
+          $infoTabela = new InfoTabela($itemsLeft);
+          tabelaConsultas($consultasConcluidasEnf);
+        } else {
+          //Mostrar mensagem de tabela sem dados
+          $mensagem->render();
+        }
+      break;
+    }
   break;
 }
 
